@@ -1,0 +1,110 @@
+package com.eddnav.ifb.patient
+
+import org.amshove.kluent.shouldBeEqualTo
+import org.amshove.kluent.shouldEqualTo
+import org.amshove.kluent.shouldThrow
+import org.jetbrains.spek.api.dsl.given
+import org.jetbrains.spek.api.dsl.it
+import org.jetbrains.spek.api.dsl.on
+import org.jetbrains.spek.subject.SubjectSpek
+
+/**
+ * @author  Eduardo Naveda
+ */
+object PatientSpec : SubjectSpek<Patient>({
+    given("a patient", {
+        subject {
+            Patient("Pat", "Noobie", 1.0, "m",
+                    bloodVolume = 60.0, fasting = 0.0, surgicalStress = 0, hemoglobin = 2.0,
+                    minHemoglobin = 1.0)
+        }
+        on("setting weight") {
+            it("should succeed if value is greater than 0") {
+                subject.bloodVolume = 2.0
+                subject.bloodVolume shouldEqualTo 2.0
+            }
+            it("should fail if value is equals to 0") {
+                { subject.weight = 0.0 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is less than 0") {
+                { subject.weight = -2.0 } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting sex") {
+            it("should succeed if value is equal to \"f\"") {
+                subject.sex = "f"
+                subject.sex shouldBeEqualTo "f"
+            }
+            it("should succeed if value is equal to \"m\"") {
+                subject.sex = "m"
+                subject.sex shouldBeEqualTo "m"
+            }
+            it("should fail if value is different than \"m\" or \"f\"") {
+                { subject.sex = "clearly not a sex value" } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting blood volume") {
+            it("should succeed if value is greater than 0") {
+                subject.bloodVolume = 11.0
+                subject.bloodVolume shouldEqualTo 11.0
+            }
+            it("should fail if value is equals to 0") {
+                { subject.bloodVolume = 0.0 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is less than 0") {
+                { subject.bloodVolume = -1.0 } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting fasting hours") {
+            it("should succeed if value is greater than 0") {
+                subject.fasting = 1.2
+                subject.fasting shouldEqualTo 1.2
+            }
+            it("should succeed if value is equals to 0") {
+                subject.fasting = 0.0
+                subject.fasting shouldEqualTo 0.0
+            }
+            it("should fail if value is less than 0") {
+                { subject.fasting = -1.0 } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting surgical stress") {
+            it("should succeed if value is greater than 0") {
+                subject.surgicalStress = 3
+                subject.surgicalStress shouldEqualTo 3
+            }
+            it("should succeed if value is equals to 0") {
+                subject.surgicalStress = 0
+                subject.surgicalStress shouldEqualTo 0
+            }
+            it("should fail if value is less than 0") {
+                { subject.surgicalStress = -1 } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting hemoglobin") {
+            it("should succeed if value is greater than 0") {
+                subject.hemoglobin = 3.2
+                subject.hemoglobin shouldEqualTo 3.2
+            }
+            it("should fail if value is equals to 0") {
+                { subject.hemoglobin = 0.0 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is less than 0") {
+                { subject.hemoglobin = -1.0 } shouldThrow IllegalArgumentException::class
+            }
+        }
+        on("setting minimum hemoglobin") {
+            it("should succeed if value is greater than 0") {
+                subject.minHemoglobin = 3.4
+                subject.minHemoglobin shouldEqualTo 3.4
+            }
+            it("should fail if value is equals 0") {
+                { subject.minHemoglobin = 0.0 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is less than 0") {
+                { subject.minHemoglobin = -1.0 } shouldThrow IllegalArgumentException::class
+            }
+        }
+
+    })
+})
