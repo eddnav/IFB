@@ -1,11 +1,11 @@
 package com.eddnav.ifb.report
 
-import com.eddnav.ifb.fluid.HourlyHydration
+import com.eddnav.ifb.fluid.HydrationSchedule
 import com.eddnav.ifb.fluid.Intake
 import com.eddnav.ifb.fluid.Output
 import com.eddnav.ifb.patient.Patient
+import com.eddnav.ifb.surgery.Surgery
 import org.amshove.kluent.shouldEqualTo
-import org.amshove.kluent.shouldThrow
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
@@ -16,26 +16,15 @@ import org.jetbrains.spek.subject.SubjectSpek
  */
 class ReportSpec : SubjectSpek<Report>({
     given("a report") {
-        val patient = Patient("Pat", "Noobie", 44.3, "m",
-                bloodVolume = 60.0, fasting = 2.0, surgicalStress = 2, hemoglobin = 12.0,
-                minHemoglobin = 5.0)
-        val hourlyHydration = HourlyHydration(patient)
         val intake = Intake(2.3, 4.2, 3.2, 3.4)
         val output = Output(4.3, 1.2, 2.2, 1.5)
+        val patient = Patient("Pat", "Noobie", 44.3, "m",
+                60.0, 2.0, 2, 12.0,
+                5.0, intake, output)
+        val hourlyHydration = HydrationSchedule(patient)
+        val surgery = Surgery("Some procedure", 3.0)
         subject {
-            Report(patient, intake, output, hourlyHydration, 3.0)
-        }
-        on("setting surgery duration") {
-            it("should succeed if value is greater than 0") {
-                subject.surgeryDuration = 1.0
-                subject.surgeryDuration shouldEqualTo 1.0
-            }
-            it("should fail if value is 0") {
-                { subject.surgeryDuration = 0.0 } shouldThrow IllegalArgumentException::class
-            }
-            it("should fail if value is less than 0") {
-                { subject.surgeryDuration = -10.0 } shouldThrow IllegalArgumentException::class
-            }
+            Report(0, patient, surgery, hourlyHydration)
         }
         on("getting minimum allowable blood loss") {
             it("should calculate it for the given patient info input") {

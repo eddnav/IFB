@@ -10,12 +10,14 @@ import org.jetbrains.spek.subject.SubjectSpek
 /**
  * @author Eduardo Naveda
  */
-object HourlyHydrationSpec: SubjectSpek<HourlyHydration>({
+object HourlyHydrationSpec : SubjectSpek<HydrationSchedule>({
     given("hourly hydration schedule") {
+        val intake = Intake(2.3, 4.2, 3.2, 3.4)
+        val output = Output(4.3, 1.2, 2.2, 1.5)
         val patient = Patient("Pat", "Noobie", 5.0, "m",
-                bloodVolume = 50.0, fasting = 5.0, surgicalStress = 9, hemoglobin = 1.0,
-                minHemoglobin = 2.0)
-        subject { HourlyHydration(patient) }
+                50.0, 5.0, 9, 1.0,
+                2.0, intake, output)
+        subject { HydrationSchedule(patient) }
         on("getting base hydration schedule") {
             it("should be an array describing 4 hours") {
                 subject.base.size shouldEqualTo 4

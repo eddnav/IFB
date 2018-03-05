@@ -1,5 +1,7 @@
 package com.eddnav.ifb.patient
 
+import com.eddnav.ifb.fluid.Intake
+import com.eddnav.ifb.fluid.Output
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldThrow
@@ -13,10 +15,12 @@ import org.jetbrains.spek.subject.SubjectSpek
  */
 object PatientSpec : SubjectSpek<Patient>({
     given("a patient", {
+        val intake = Intake(2.3, 4.2, 3.2, 3.4)
+        val output = Output(4.3, 1.2, 2.2, 1.5)
         subject {
             Patient("Pat", "Noobie", 1.0, "m",
-                    bloodVolume = 60.0, fasting = 0.0, surgicalStress = 0, hemoglobin = 2.0,
-                    minHemoglobin = 1.0)
+                    60.0, 0.0, 0, 2.0,
+                    1.0, intake, output)
         }
         on("setting weight") {
             it("should succeed if value is greater than 0") {

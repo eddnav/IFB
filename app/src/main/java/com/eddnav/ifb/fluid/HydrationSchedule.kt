@@ -9,20 +9,20 @@ import com.eddnav.ifb.patient.Patient
  *
  * @author Eduardo Naveda
  */
-class HourlyHydration(private var patient: Patient) {
+class HydrationSchedule(private var patient: Patient) {
 
     /**
      * @property base Array describing four hours of base hydration.
      */
     var base: DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
-        get() = DoubleArray(4, { patient.weight * 2})
+        get() = DoubleArray(4, { patient.weight * 2 })
         private set
 
     /**
      * @property insensibleLosses Array describing four hours of hydration due to insensible losses.
      */
     var insensibleLosses: DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
-        get() = DoubleArray(4, { patient.weight * 2})
+        get() = DoubleArray(4, { patient.weight * 2 })
         private set
 
     /**
@@ -46,6 +46,6 @@ class HourlyHydration(private var patient: Patient) {
      * @property total Array describing scheduled four hours hydration, total per hour.
      */
     var total: DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
-        get() = DoubleArray(4, { i ->  this.base[i] +  this.insensibleLosses[i] + this.fasting[i] + this.surgicalStress[i] })
+        get() = DoubleArray(4, { i -> this.base[i] + this.insensibleLosses[i] + this.fasting[i] + this.surgicalStress[i] })
         private set
 }

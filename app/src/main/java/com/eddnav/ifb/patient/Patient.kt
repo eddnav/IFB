@@ -1,5 +1,8 @@
 package com.eddnav.ifb.patient
 
+import com.eddnav.ifb.fluid.Intake
+import com.eddnav.ifb.fluid.Output
+
 /**
  * Describes a patient's information.
  *
@@ -21,7 +24,8 @@ package com.eddnav.ifb.patient
 class Patient(var firstName: String, var lastName: String,
               weight: Double, sex: String, bloodVolume: Double,
               fasting: Double, surgicalStress: Int,
-              hemoglobin: Double, minHemoglobin: Double) {
+              hemoglobin: Double, minHemoglobin: Double,
+              var intake: Intake, var output: Output) {
 
     /**
      * @property weight Weight of the patient in kg.
