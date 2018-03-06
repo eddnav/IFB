@@ -1,5 +1,6 @@
 package com.eddnav.ifb.surgery
 
+import com.eddnav.ifb.domain.surgery.Surgery
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldThrow
 import org.jetbrains.spek.api.dsl.given

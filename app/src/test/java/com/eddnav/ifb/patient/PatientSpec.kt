@@ -1,7 +1,8 @@
 package com.eddnav.ifb.patient
 
-import com.eddnav.ifb.fluid.Intake
-import com.eddnav.ifb.fluid.Output
+import com.eddnav.ifb.domain.intake.Intake
+import com.eddnav.ifb.domain.output.Output
+import com.eddnav.ifb.domain.patient.Patient
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldThrow

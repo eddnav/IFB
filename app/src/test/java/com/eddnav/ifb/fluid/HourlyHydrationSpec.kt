@@ -1,6 +1,9 @@
 package com.eddnav.ifb.fluid
 
-import com.eddnav.ifb.patient.Patient
+import com.eddnav.ifb.domain.intake.Intake
+import com.eddnav.ifb.domain.output.Output
+import com.eddnav.ifb.domain.report.HydrationSchedule
+import com.eddnav.ifb.domain.patient.Patient
 import org.amshove.kluent.shouldEqualTo
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it

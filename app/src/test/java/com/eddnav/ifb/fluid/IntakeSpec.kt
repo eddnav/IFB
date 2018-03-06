@@ -1,5 +1,6 @@
 package com.eddnav.ifb.fluid
 
+import com.eddnav.ifb.domain.intake.Intake
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldThrow
 import org.jetbrains.spek.api.dsl.given
