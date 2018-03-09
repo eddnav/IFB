@@ -1,6 +1,5 @@
 package com.eddnav.ifb.data.report.repository
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.cache.intake.model.IntakeEntity
@@ -19,31 +18,33 @@ class ReportRepository(var app: IFBApp) { // TODO: disgusting, remember to move 
     /**
      * Returns a list of all the saved reports.
      */
-    fun getReports() : LiveData<List<Report>> = Transformations.map(app.database.reportDAO().getReports(), {
+    fun getAll() = Transformations.map(app.database.reportDAO().getAll(), {
         it.map(FullReport::toDomain)
     })
+
+    fun getAllFail() = app.database.reportDAO().getAllFail() // TODO: Remove
 
     /**
      * Returns a report for the given id.
      *
      * @param id Id of the report to get.
      */
-    fun getReport(id: Long) : LiveData<Report> = Transformations.map(app.database.reportDAO().getReport(id), {
+    fun get(id: Long) = Transformations.map(app.database.reportDAO().get(id), {
         it.toDomain()
     })
 
     /**
      * Adds a new report, creates the required patient, surgery, intake and output as well.
      */
-    fun addReport(report: Report) {
+    fun add(report: Report) {
         val database = app.database
-            database.runInTransaction {
+        database.runInTransaction {
             val intakeId = database.intakeDAO().addIntake(IntakeEntity(report.patient.intake))
             val outputId = database.outputDAO().addOutput(OutputEntity(report.patient.output))
             val patientId = database.patientDAO().addPatient(PatientEntity(report.patient, intakeId, outputId))
             val surgeryId = database.surgeryDAO().addSurgery(SurgeryEntity(report.surgery))
 
-            database.reportDAO().addReport(ReportEntity(patientId, surgeryId))
+            database.reportDAO().add(ReportEntity(patientId, surgeryId))
         }
     }
 }

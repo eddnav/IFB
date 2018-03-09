@@ -16,11 +16,14 @@ import com.eddnav.ifb.cache.report.representation.FullReport
 interface ReportDAO {
 
     @Query(Constants.QUERY_GET_REPORT)
-    fun getReport(id: Long): LiveData<FullReport>
+    fun get(id: Long): LiveData<FullReport>
 
     @Query(Constants.QUERY_GET_REPORTS)
-    fun getReports(): LiveData<List<FullReport>>
+    fun getAll(): LiveData<List<FullReport>>
+
+    @Query(Constants.QUERY_GET_REPORTS)
+    fun getAllFail(): List<FullReport> // TODO: Remove
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addReport(report: ReportEntity): Long
+    fun add(report: ReportEntity): Long
 }
