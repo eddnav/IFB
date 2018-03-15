@@ -12,6 +12,9 @@ import com.eddnav.ifb.data.report.repository.ReportRepository
 import com.eddnav.ifb.view.report.EditReportFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * @author Eduardo Naveda
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +27,9 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
 
-        supportFragmentManager.beginTransaction().add(R.id.mainContent, EditReportFragment.newInstance("0", "0")).commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().add(R.id.mainContent, EditReportFragment.newInstance("0", "0")).commit()
+        }
 
         val repository = ReportRepository(this.application as IFBApp)
         val reports = repository.getAllFail()

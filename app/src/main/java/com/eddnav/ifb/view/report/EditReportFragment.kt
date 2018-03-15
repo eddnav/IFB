@@ -1,7 +1,6 @@
 package com.eddnav.ifb.view.report
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
@@ -9,24 +8,24 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import com.eddnav.ifb.R
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.presentation.EditReportViewModel
-
+import com.thedeadpixelsociety.passport.*
 import kotlinx.android.synthetic.main.fragment_edit_report.*
 
 /**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [EditReportFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [EditReportFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * UI for saving/editing reports.
+ *
+ * // TODO: as we aren't using two way bindings, the view model has no clue of what's happening in the UI, please save and load instance state accordingly.
+ * @author Eduardo Naveda
  */
 class EditReportFragment : Fragment() {
 
-    private lateinit var vm: EditReportViewModel
-    private lateinit  var report: Report
+    private lateinit var mViewModel: EditReportViewModel
+    private lateinit var mValidator: Passport
+    private lateinit var mReport: Report
 
     // TODO: Rename and change types of parameters
     var mParam1: String? = null
@@ -36,30 +35,36 @@ class EditReportFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
-        }
 
-        vm = ViewModelProviders.of(this).get(EditReportViewModel::class.java)
+        mParam1 = arguments?.getString(ARG_PARAM1)
+        mParam2 = arguments?.getString(ARG_PARAM2)
+
+        mViewModel = ViewModelProviders.of(this).get(EditReportViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_edit_report, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_edit_report, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        vm.load()
-        vm.report.observe(this, Observer<Report> {
-            report = it!!
+
+        mViewModel.load()
+        mViewModel.report.observe(this, Observer<Report> {
+            mReport = it!!
             populate()
         })
 
+        mValidator = createValidator()
+
+        val adapter = ArrayAdapter<String>(view!!.context, R.layout.spinner_item, resources.getStringArray(R.array.sex_labels))
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+        sex.adapter = adapter
+
         saveButton.setOnClickListener {
-            save()
+            if (mValidator.validate(this, ValidationMethod.IMMEDIATE)) {
+                mViewModel.save(mReport)
+            }
         }
     }
 
@@ -100,12 +105,24 @@ class EditReportFragment : Fragment() {
     }*/
 
     private fun populate() {
-        firstName.setText(report.patient.firstName)
+        firstName.setText(mReport.patient.firstName)
+        lastName.setText(mReport.patient.lastName)
     }
 
     private fun save() {
-        report.patient.firstName = firstName.text.toString()
-        vm.save(report)
+        mReport.patient.firstName = firstName.text.toString()
+        mViewModel.save(mReport)
+    }
+
+    private fun createValidator(): Passport {
+        return passport {
+            rules<String>(firstNameInputLayout) {
+                notEmpty(getString(R.string.validation_not_empty))
+            }
+            rules<String>(lastNameInputLayout) {
+                notEmpty(getString(R.string.validation_not_empty))
+            }
+        }
     }
 
     companion object {

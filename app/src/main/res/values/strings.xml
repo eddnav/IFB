@@ -2,7 +2,12 @@
     <string name="app_name">IFB</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="name_label">First Name</string>
-    <string name="first_name_hint">Pat</string>
+    <string name="first_name_label">First Name</string>
+    <string name="last_name_label">Last Name</string>
+    <string name="weight_label">Weight</string>
+
+    <string name="kg_suffix">kg</string>
+
+    <string name="validation_not_empty">Should not be empty</string>
+
 </resources>
