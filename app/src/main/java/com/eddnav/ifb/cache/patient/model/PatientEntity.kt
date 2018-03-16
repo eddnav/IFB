@@ -10,7 +10,7 @@ import com.eddnav.ifb.cache.output.model.OutputEntity
 import com.eddnav.ifb.domain.patient.Patient
 
 /**
- * Not meant to kept in catalog, this entity is simple an in-time represantion of a patient's medical
+ * Not meant to kept in catalog, this entity is simply an in-time representation of a patient's medical
  * information.
  *
  * @author Eduardo Naveda
