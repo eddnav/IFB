@@ -7,7 +7,7 @@ import org.threeten.bp.format.DateTimeFormatter
 /**
  * @author Eduardo Naveda
  */
-object IFBTypeConverters {
+class IFBTypeConverters {
     private val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
 
     @TypeConverter
