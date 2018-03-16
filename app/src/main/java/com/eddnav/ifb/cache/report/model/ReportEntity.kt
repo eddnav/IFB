@@ -7,6 +7,7 @@ import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
 import com.eddnav.ifb.cache.patient.model.PatientEntity
 import com.eddnav.ifb.cache.surgery.model.SurgeryEntity
+import org.threeten.bp.OffsetDateTime
 
 /**
  * @author Eduardo Naveda
@@ -32,4 +33,8 @@ data class ReportEntity(
 
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
+    var created: OffsetDateTime? = null
+
+    var updated: OffsetDateTime? = null
 }

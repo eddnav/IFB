@@ -2,6 +2,7 @@ package com.eddnav.ifb.cache
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
 import com.eddnav.ifb.cache.intake.dao.IntakeDAO
 import com.eddnav.ifb.cache.intake.model.IntakeEntity
 import com.eddnav.ifb.cache.output.dao.OutputDAO
@@ -22,8 +23,8 @@ import com.eddnav.ifb.cache.surgery.model.SurgeryEntity
     IntakeEntity::class,
     OutputEntity::class,
     ReportEntity::class], version = 1, exportSchema = false)
+@TypeConverters(IFBTypeConverters::class)
 abstract class IFBDatabase : RoomDatabase() {
-
     abstract fun patientDAO(): PatientDAO
     abstract fun surgeryDAO(): SurgeryDAO
     abstract fun intakeDAO(): IntakeDAO
