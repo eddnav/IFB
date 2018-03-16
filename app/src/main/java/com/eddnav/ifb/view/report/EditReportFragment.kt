@@ -107,6 +107,11 @@ class EditReportFragment : Fragment() {
     private fun populate() {
         firstName.setText(mReport.patient.firstName)
         lastName.setText(mReport.patient.lastName)
+        age.setText(mReport.patient.age.toString())
+        weight.setText(mReport.patient.weight.toString())
+        sex.setSelection(if (mReport.patient.sex == "f") 0 else 1) // TODO: Make this less hard coded.
+        surgeryDescription.setText(mReport.surgery.description)
+        surgeryDuration.setText(mReport.surgery.duration.toString())
     }
 
     private fun save() {

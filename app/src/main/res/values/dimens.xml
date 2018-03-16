@@ -8,7 +8,9 @@
 
     <dimen name="form_vertical_spacing">16dp</dimen>
     <dimen name="form_horizontal_spacing">8dp</dimen>
+    <dimen name="form_side_icon_top_margin">18dp</dimen>
 
     <dimen name="form_text_size">16sp</dimen>
     <dimen name="spinner_item_height">28dp</dimen>
+    <dimen name="form_vertical_section_margin">24dp</dimen>
 </resources>
