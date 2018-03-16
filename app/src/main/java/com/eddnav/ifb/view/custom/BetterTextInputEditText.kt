@@ -26,17 +26,21 @@ class BetterTextInputEditText : TextInputEditText {
             setupCompoundDrawables()
         }
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context) : super(context, null)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-
-    }
-
-    init {
+    // For some reason, chaining constructors breaks instancing here.
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         mTextPaint!!.color = currentHintTextColor
         mTextPaint!!.textSize = textSize
         mTextPaint!!.textAlign = Paint.Align.RIGHT
+
+        val array = context.obtainStyledAttributes(attrs, R.styleable.BetterTextInputEditText, 0, 0)
+
+        try {
+            suffix = array.getString(R.styleable.BetterTextInputEditText_suffix) ?: ""
+        } finally {
+            array.recycle()
+        }
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -47,10 +51,10 @@ class BetterTextInputEditText : TextInputEditText {
     private fun setupCompoundDrawables() {
         mSuffixDrawable.text = suffix
         compoundDrawablePadding = (resources.getDimension(R.dimen.better_text_input_edit_text_suffix_margin) + mTextPaint!!.measureText(suffix)).toInt()
-        setCompoundDrawablesWithIntrinsicBounds(null, null, mSuffixDrawable, null)
+        setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mSuffixDrawable, null)
     }
 
-    override fun setTypeface(typeface: Typeface) {
+    override fun setTypeface(typeface: Typeface?) {
         super.setTypeface(typeface)
         mTextPaint?.typeface = typeface
 
@@ -77,14 +81,6 @@ class BetterTextInputEditText : TextInputEditText {
         }
 
         override fun setColorFilter(colorFilter: ColorFilter?) {
-        }
-
-        override fun getIntrinsicWidth(): Int {
-            return mTextPaint!!.measureText(text).toInt()
-        }
-
-        override fun getIntrinsicHeight(): Int {
-            return textSize.toInt()
         }
     }
 }

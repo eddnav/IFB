@@ -1,8 +1,14 @@
 <resources>
     <dimen name="standard_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="form_vertical_margin">16dp</dimen>
+
     <dimen name="better_text_input_edit_text_suffix_margin">4dp</dimen>
 
+    <dimen name="text_input_edit_text_bottom_padding">16dp</dimen>
+
+    <dimen name="form_vertical_spacing">16dp</dimen>
+    <dimen name="form_horizontal_spacing">8dp</dimen>
+
     <dimen name="form_text_size">16sp</dimen>
+    <dimen name="spinner_item_height">28dp</dimen>
 </resources>

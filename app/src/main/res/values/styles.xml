@@ -8,8 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="editTextStyle">@style/IFBEditText</item>
         <item name="android:editTextStyle">@style/IFBEditText</item>
-        <item name="spinnerStyle">@style/Base.Widget.AppCompat.Spinner.Underlined</item>
-        <item name="android:spinnerStyle">@style/Base.Widget.AppCompat.Spinner.Underlined</item>
+        <item name="android:spinnerStyle">@style/IFBSpinner</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -23,12 +22,18 @@
 
     <style name="IFBEditText" parent="Base.Widget.AppCompat.EditText">
         <item name="android:textSize">@dimen/form_text_size</item>
-        <item name="android:color">@color/inputText</item>
+        <item name="android:textColor">@color/inputText</item>
     </style>
 
     <style name="IFBSpinnerItem">
         <item name="android:textSize">@dimen/form_text_size</item>
-        <item name="android:color">@color/inputText</item>
+        <item name="android:textColor">@color/inputText</item>
+    </style>
+
+    <style name="IFBSpinner" parent="@style/Base.Widget.AppCompat.Spinner">
+        <item name="android:textSize">@dimen/form_text_size</item>
+        <item name="android:textColor">@color/inputText</item>
+        <item name="android:background">?android:attr/editTextBackground</item>
     </style>
 
 </resources>

@@ -39,7 +39,7 @@ data class FullReport(
         val intake = Intake(crystalloids, colloids, hemoderivatives, drugInfusions)
         val output = Output(diuresis, aspiration, compresses, levinsTube)
         val surgery = Surgery(description, duration)
-        val patient = Patient(firstName, lastName, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, minHemoglobin, intake, output)
+        val patient = Patient(firstName, lastName, 10, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, minHemoglobin, intake, output)
 
         return Report(id, patient, surgery, hydrationSchedule = HydrationSchedule(patient))
     }

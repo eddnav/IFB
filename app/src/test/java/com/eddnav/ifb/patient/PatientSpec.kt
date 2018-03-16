@@ -19,9 +19,21 @@ object PatientSpec : SubjectSpek<Patient>({
         val intake = Intake(2.3, 4.2, 3.2, 3.4)
         val output = Output(4.3, 1.2, 2.2, 1.5)
         subject {
-            Patient("Pat", "Noobie", 1.0, "m",
-                    60.0, 0.0, 0, 2.0,
-                    1.0, intake, output)
+            Patient("Pat", "Noobie", 10, 1.0,
+                    "m", 60.0, 0.0, 0,
+                    2.0, 1.0, intake, output)
+        }
+        on("setting age") {
+            it("should succeed if value is greater than 0") {
+                subject.age = 11
+                subject.age shouldEqualTo 11
+            }
+            it("should fail if value is equals to 0") {
+                { subject.age = 0 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is less than 0") {
+                { subject.age = -2 } shouldThrow IllegalArgumentException::class
+            }
         }
         on("setting weight") {
             it("should succeed if value is greater than 0") {

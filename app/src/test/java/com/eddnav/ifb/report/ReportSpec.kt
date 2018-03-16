@@ -19,9 +19,9 @@ class ReportSpec : SubjectSpek<Report>({
     given("a report") {
         val intake = Intake(2.3, 4.2, 3.2, 3.4)
         val output = Output(4.3, 1.2, 2.2, 1.5)
-        val patient = Patient("Pat", "Noobie", 44.3, "m",
-                60.0, 2.0, 2, 12.0,
-                5.0, intake, output)
+        val patient = Patient("Pat", "Noobie", 10, 44.3,
+                "m", 60.0, 2.0, 2,
+                12.0, 5.0, intake, output)
         val hourlyHydration = HydrationSchedule(patient)
         val surgery = Surgery("Some procedure", 3.0)
         subject {

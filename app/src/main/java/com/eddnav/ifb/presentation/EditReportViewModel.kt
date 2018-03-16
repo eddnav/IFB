@@ -29,8 +29,9 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
                 report.postValue(it)
             })
         } else {
-            val patient = Patient("", "", 60.0, "f", // TODO: add a create default report
-                    70.0, 0.0, 0, 13.5, 13.5,
+            val patient = Patient("", "", 10, 60.0, // TODO: add a create default report
+                    "f", 70.0, 0.0, 0, 13.5,
+                    13.5,
                     Intake(0.0, 0.0, 0.0, 0.0),
                     Output(0.0, 0.0, 0.0, 0.0))
             report.postValue(Report(patient,

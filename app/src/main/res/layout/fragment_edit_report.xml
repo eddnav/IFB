@@ -10,12 +10,23 @@
         android:orientation="vertical"
         tools:context="com.eddnav.ifb.view.report.EditReportFragment">
 
+        <ImageView
+            android:id="@+id/personIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_margin"
+            android:background="@drawable/ic_person_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/firstNameInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <android.support.design.widget.TextInputLayout
             android:id="@+id/firstNameInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/lastNameInputLayout"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/standard_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/personIcon"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText
@@ -23,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/first_name_label"
+                android:paddingBottom="@dimen/text_input_edit_text_bottom_padding"
                 android:singleLine="true"
                 tools:text="Pat" />
 
@@ -32,9 +44,9 @@
             android:id="@+id/lastNameInputLayout"
             android:layout_width="0dp"
             android:layout_height="58dp"
-            android:layout_marginTop="@dimen/form_vertical_margin"
+            android:layout_marginTop="@dimen/form_vertical_spacing"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/firstNameInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout">
 
             <android.support.design.widget.TextInputEditText
@@ -42,8 +54,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/last_name_label"
+                android:paddingBottom="@dimen/text_input_edit_text_bottom_padding"
                 android:singleLine="true"
                 tools:text="Newbie" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ageInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/form_horizontal_spacing"
+            android:layout_marginTop="@dimen/form_vertical_spacing"
+            app:layout_constraintEnd_toStartOf="@+id/guideline0"
+            app:layout_constraintStart_toStartOf="@id/firstNameInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/age_label"
+                android:inputType="number"
+                android:paddingBottom="@dimen/text_input_edit_text_bottom_padding"
+                android:singleLine="true"
+                tools:text="0" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -51,9 +86,10 @@
             android:id="@+id/weightInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/form_vertical_margin"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineMid"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="@dimen/form_horizontal_spacing"
+            android:layout_marginTop="@dimen/form_vertical_spacing"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="@id/guideline0"
             app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText
@@ -62,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/weight_label"
                 android:inputType="numberDecimal"
+                android:paddingBottom="@dimen/text_input_edit_text_bottom_padding"
                 android:singleLine="true"
                 app:suffix="@string/kg_suffix"
                 tools:text="0" />
@@ -71,10 +108,10 @@
         <Spinner
             android:id="@+id/sex"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             app:layout_constraintBottom_toBottomOf="@+id/weightInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guidelineMid"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout"
             app:layout_constraintVertical_bias="1.0"
             tools:listitem="@layout/spinner_item" />

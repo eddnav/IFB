@@ -8,8 +8,9 @@ import com.eddnav.ifb.domain.output.Output
  *
  * @param firstName First name.
  * @param lastName Last name.
- * @param weight Weight of the patient, measured in kg.
- * @param sex Sex of the patient, should be 'f' or 'm'.
+ * @param age Patient's age.
+ * @param weight Patient's weight, measured in kg.
+ * @param sex Patient's sex, should be 'f' or 'm'.
  * @param bloodVolume Blood volume per kg, measured in ml/kg.
  * @param fasting Hours elapsed in pathological fasting state.
  * @param surgicalStress Measured surgical stress.
@@ -22,13 +23,24 @@ import com.eddnav.ifb.domain.output.Output
  * @property lastName Last name.
  */
 class Patient(var firstName: String, var lastName: String,
-              weight: Double, sex: String, bloodVolume: Double,
-              fasting: Double, surgicalStress: Int,
-              hemoglobin: Double, minHemoglobin: Double,
-              var intake: Intake, var output: Output) {
+              age: Int, weight: Double, sex: String,
+              bloodVolume: Double, fasting: Double,
+              surgicalStress: Int, hemoglobin: Double,
+              minHemoglobin: Double, var intake: Intake, var output: Output) {
 
     /**
-     * @property weight Weight of the patient in kg.
+     * @property age Patient's age.
+     */
+    var age: Int = 0
+        set(value) {
+            if (value <= 0) {
+                throw IllegalArgumentException("Age should be > 0")
+            }
+            field = value
+        }
+
+    /**
+     * @property weight Patient's weight in kg.
      */
     var weight: Double = 0.0
         set(value) {
@@ -38,7 +50,7 @@ class Patient(var firstName: String, var lastName: String,
             field = value
         }
     /**
-     * @property sex Sex of the patient, should be 'f' or 'm'.
+     * @property sex Patient's sex, should be 'f' or 'm'.
      */
     var sex: String = ""
         set(value) {
@@ -104,6 +116,7 @@ class Patient(var firstName: String, var lastName: String,
         }
 
     init {
+        this.age = age
         this.weight = weight
         this.sex = sex
         this.bloodVolume = bloodVolume
