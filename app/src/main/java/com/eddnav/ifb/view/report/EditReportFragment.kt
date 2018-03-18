@@ -61,11 +61,11 @@ class EditReportFragment : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         sex.adapter = adapter
 
-        saveButton.setOnClickListener {
+        /**saveButton.setOnClickListener {
             if (mValidator.validate(this, ValidationMethod.IMMEDIATE)) {
                 mViewModel.save(mReport)
             }
-        }
+        }**/
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -16,4 +16,13 @@
     <string name="g_dl_suffix">g/dl</string>
 
     <string name="validation_not_empty">Should not be empty</string>
+    <string name="surgery_icon_description">Surgery Icon</string>
+    <string name="person_icon_description">Person Icon</string>
+    <string name="blood_volume_label">Blood Volume</string>
+    <string name="pathological_fasting_label">Pathological Fasting</string>
+    <string name="surgical_stress">Surgical Stress</string>
+    <string name="ml_kg_suffix">ml/kg</string>
+    <string name="hemoglobin">Hemoglobin</string>
+    <string name="min_hemoglobin">Min. Hemoglobin</string>
+    <string name="medical_info_description">Medical Info</string>
 </resources>
