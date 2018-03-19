@@ -28,15 +28,10 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
             Transformations.map(repository.get(id), {
                 report.postValue(it)
             })
+
+            repository.get(id)
         } else {
-            val patient = Patient("", "", 10, 60.0, // TODO: add a create default report
-                    "f", 70.0, 0.0, 0, 13.5,
-                    13.5,
-                    Intake(0.0, 0.0, 0.0, 0.0),
-                    Output(0.0, 0.0, 0.0, 0.0))
-            report.postValue(Report(patient,
-                    Surgery("", 1.0),
-                    HydrationSchedule(patient)))
+            report.value = Report.default()
         }
     }
 

@@ -11,7 +11,7 @@ import com.thedeadpixelsociety.passport.TextInputLayoutValidator
  */
 class IFBApp : Application() {
 
-    var database: IFBDatabase = Room.databaseBuilder(this, IFBDatabase::class.java, "ifb-db").allowMainThreadQueries().build()
+    var database: IFBDatabase = Room.databaseBuilder(this, IFBDatabase::class.java, "ifb-db").build()
 
     override fun onCreate() {
         super.onCreate()
