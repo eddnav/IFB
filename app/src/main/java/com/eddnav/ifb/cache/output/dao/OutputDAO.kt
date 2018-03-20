@@ -12,5 +12,5 @@ import com.eddnav.ifb.cache.output.model.OutputEntity
 interface OutputDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addOutput(output: OutputEntity): Long
+    fun add(output: OutputEntity): Long
 }

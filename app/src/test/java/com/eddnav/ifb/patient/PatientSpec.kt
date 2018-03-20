@@ -4,6 +4,7 @@ import com.eddnav.ifb.domain.intake.Intake
 import com.eddnav.ifb.domain.output.Output
 import com.eddnav.ifb.domain.patient.Patient
 import org.amshove.kluent.shouldBeEqualTo
+import org.amshove.kluent.shouldEqual
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldThrow
 import org.jetbrains.spek.api.dsl.given
@@ -22,6 +23,11 @@ object PatientSpec : SubjectSpek<Patient>({
             Patient("Pat", "Noobie", 10, 1.0,
                     "m", 60.0, 0.0, 0,
                     2.0, 1.0, intake, output)
+        }
+        on("getting full name") {
+            it("should return first and last name, concatenated by a space") {
+                subject.fullName shouldEqual "Pat Noobie"
+            }
         }
         on("setting age") {
             it("should succeed if value is greater than 0") {

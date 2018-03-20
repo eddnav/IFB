@@ -12,5 +12,5 @@ import com.eddnav.ifb.cache.patient.model.PatientEntity
 interface PatientDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addPatient(patient: PatientEntity): Long
+    fun add(patient: PatientEntity): Long
 }

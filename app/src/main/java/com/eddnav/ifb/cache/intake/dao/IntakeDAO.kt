@@ -12,5 +12,5 @@ import com.eddnav.ifb.cache.intake.model.IntakeEntity
 interface IntakeDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addIntake(intake: IntakeEntity): Long
+    fun add(intake: IntakeEntity): Long
 }

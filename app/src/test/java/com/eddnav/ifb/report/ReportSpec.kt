@@ -25,7 +25,7 @@ class ReportSpec : SubjectSpek<Report>({
         val hourlyHydration = HydrationSchedule(patient)
         val surgery = Surgery("Some procedure", 3.0)
         subject {
-            Report(0, patient, surgery, hourlyHydration)
+            Report(0, patient, surgery, hourlyHydration, null, null)
         }
         on("getting minimum allowable blood loss") {
             it("should calculate it for the given patient info input") {

@@ -12,5 +12,5 @@ import com.eddnav.ifb.cache.surgery.model.SurgeryEntity
 interface SurgeryDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addSurgery(surgery: SurgeryEntity): Long
+    fun add(surgery: SurgeryEntity): Long
 }

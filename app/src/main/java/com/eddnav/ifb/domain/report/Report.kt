@@ -4,11 +4,12 @@ import com.eddnav.ifb.domain.intake.Intake
 import com.eddnav.ifb.domain.output.Output
 import com.eddnav.ifb.domain.patient.Patient
 import com.eddnav.ifb.domain.surgery.Surgery
+import org.threeten.bp.OffsetDateTime
 
 /**
  * @author Eduardo Naveda
  */
-class Report(var id: Long, var patient: Patient, var surgery: Surgery, var hydrationSchedule: HydrationSchedule) {
+class Report(var id: Long, var patient: Patient, var surgery: Surgery, var hydrationSchedule: HydrationSchedule, var created: OffsetDateTime?, var updated: OffsetDateTime?) {
 
     var minimumAllowableBloodLoss: Double = 0.0
         get() = ((this.patient.hemoglobin - this.patient.minHemoglobin) / this.patient.hemoglobin) * this.patient.bloodVolume * this.patient.weight
@@ -30,7 +31,7 @@ class Report(var id: Long, var patient: Patient, var surgery: Surgery, var hydra
         get() = this.patient.intake.total - this.patient.output.total
         private set
 
-    constructor(patient: Patient, surgery: Surgery, hydrationSchedule: HydrationSchedule) : this(0, patient, surgery, hydrationSchedule)
+    constructor(patient: Patient, surgery: Surgery, hydrationSchedule: HydrationSchedule) : this(0, patient, surgery, hydrationSchedule, null, null)
 
     companion object {
 

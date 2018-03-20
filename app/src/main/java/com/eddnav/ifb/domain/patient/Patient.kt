@@ -125,4 +125,6 @@ class Patient(var firstName: String, var lastName: String,
         this.hemoglobin = hemoglobin
         this.minHemoglobin = minHemoglobin
     }
+
+    val fullName: String = "$firstName $lastName"
 }

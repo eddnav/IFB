@@ -8,7 +8,7 @@ object Constants {
     internal const val QUERY_GET_REPORT = "SELECT Reports.id AS id, firstName, lastName, weight, sex, bloodVolume, " +
             "fasting, surgicalStress, hemoglobin, minHemoglobin, crystalloids, " +
             "colloids, hemoderivatives, drugInfusions, diuresis, aspiration, " +
-            "compresses, levinsTube, description, duration FROM Reports INNER JOIN Surgeries " +
+            "compresses, levinsTube, description, duration, Reports.created, Reports.updated FROM Reports INNER JOIN Surgeries " +
             "on Reports.surgeryId = Surgeries.id INNER JOIN (SELECT Patients.id, firstName, " +
             "lastName, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, " +
             "minHemoglobin, crystalloids, colloids, hemoderivatives, drugInfusions, diuresis, " +
@@ -19,7 +19,7 @@ object Constants {
     internal const val QUERY_GET_REPORTS = "SELECT Reports.id AS id, firstName, lastName, weight, sex, bloodVolume, " +
             "fasting, surgicalStress, hemoglobin, minHemoglobin, crystalloids, " +
             "colloids, hemoderivatives, drugInfusions, diuresis, aspiration, " +
-            "compresses, levinsTube, description, duration FROM Reports INNER JOIN Surgeries " +
+            "compresses, levinsTube, description, duration, Reports.created, Reports.updated FROM Reports INNER JOIN Surgeries " +
             "on Reports.surgeryId = Surgeries.id INNER JOIN (SELECT Patients.id, firstName, " +
             "lastName, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, " +
             "minHemoglobin, crystalloids, colloids, hemoderivatives, drugInfusions, diuresis, " +

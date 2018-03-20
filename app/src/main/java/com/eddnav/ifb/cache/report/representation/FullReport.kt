@@ -8,31 +8,34 @@ import com.eddnav.ifb.domain.patient.Patient
 import com.eddnav.ifb.domain.report.HydrationSchedule
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.domain.surgery.Surgery
+import org.threeten.bp.OffsetDateTime
 
 /**
  * @author Eduardo Naveda
  */
 data class FullReport(
-        var id: Long,
-        var firstName: String,
-        var lastName: String,
-        var weight: Double,
-        var sex: String,
-        var bloodVolume: Double,
-        var fasting: Double,
-        var surgicalStress: Int,
-        var hemoglobin: Double,
-        var minHemoglobin: Double,
-        var description: String,
-        var duration: Double,
-        var crystalloids: Double,
-        var colloids: Double,
-        var hemoderivatives: Double,
-        var drugInfusions: Double,
-        var diuresis: Double,
-        var aspiration: Double,
-        var compresses: Double,
-        var levinsTube: Double) : Representation<Report> {
+        val id: Long,
+        val firstName: String,
+        val lastName: String,
+        val weight: Double,
+        val sex: String,
+        val bloodVolume: Double,
+        val fasting: Double,
+        val surgicalStress: Int,
+        val hemoglobin: Double,
+        val minHemoglobin: Double,
+        val description: String,
+        val duration: Double,
+        val crystalloids: Double,
+        val colloids: Double,
+        val hemoderivatives: Double,
+        val drugInfusions: Double,
+        val diuresis: Double,
+        val aspiration: Double,
+        val compresses: Double,
+        val levinsTube: Double,
+        val created: OffsetDateTime?,
+        val updated: OffsetDateTime?) : Representation<Report> {
 
     @Ignore
     override fun toDomain(): Report {
@@ -41,6 +44,6 @@ data class FullReport(
         val surgery = Surgery(description, duration)
         val patient = Patient(firstName, lastName, 10, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, minHemoglobin, intake, output)
 
-        return Report(id, patient, surgery, hydrationSchedule = HydrationSchedule(patient))
+        return Report(id, patient, surgery, HydrationSchedule(patient), created, updated)
     }
 }

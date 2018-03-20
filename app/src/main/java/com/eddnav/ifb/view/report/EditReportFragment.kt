@@ -33,7 +33,6 @@ class EditReportFragment : Fragment() {
 
     private var mId: Long? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -53,6 +52,10 @@ class EditReportFragment : Fragment() {
         mViewModel.report.observe(this, Observer<Report> {
             mReport = it!!
             savedInstanceState ?: populate()
+        })
+
+        mViewModel.saveSuccessEvent.observe(this, Observer {
+            mListener?.onSaveSuccess()
         })
 
         mValidator = createValidator()

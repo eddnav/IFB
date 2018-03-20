@@ -29,12 +29,8 @@ import org.threeten.bp.OffsetDateTime
         ]
 )
 data class ReportEntity(
-        var patientId: Long, var surgeryId: Long) {
+        var patientId: Long, var surgeryId: Long, var created: OffsetDateTime, var updated: OffsetDateTime) {
 
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
-
-    var created: OffsetDateTime? = null
-
-    var updated: OffsetDateTime? = null
 }

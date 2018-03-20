@@ -6,12 +6,10 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.data.report.repository.ReportRepository
-import com.eddnav.ifb.domain.intake.Intake
-import com.eddnav.ifb.domain.output.Output
-import com.eddnav.ifb.domain.patient.Patient
-import com.eddnav.ifb.domain.report.HydrationSchedule
 import com.eddnav.ifb.domain.report.Report
-import com.eddnav.ifb.domain.surgery.Surgery
+import com.eddnav.ifb.vendor.SingleLiveEvent
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
 
 /**
  * @author Eduardo Naveda
@@ -23,13 +21,16 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
     var report: MutableLiveData<Report> = MutableLiveData()
         private set
 
+    var saveSuccessEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
+        private set
+
     fun load(id: Long? = null) {
         if (id !== null) {
-            Transformations.map(repository.get(id), {
-                report.postValue(it)
-            })
-
-            repository.get(id)
+            launch (UI) {
+                Transformations.map(repository.getAsync(id).await(), {
+                    report.value = it
+                })
+            }
         } else {
             report.value = Report.default()
         }
@@ -37,6 +38,9 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
 
     fun save(report: Report) {
-        repository.add(report)
+        launch(UI) {
+            repository.addAsync(report).await()
+            saveSuccessEvent.call()
+        }
     }
 }
