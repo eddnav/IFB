@@ -5,25 +5,14 @@ package com.eddnav.ifb.cache.report
  */
 object Constants {
 
-    internal const val QUERY_GET_REPORT = "SELECT Reports.id AS id, firstName, lastName, weight, sex, bloodVolume, " +
+    internal const val QUERY_GET_REPORT = "SELECT id, firstName, lastName, age, weight, sex, bloodVolume, " +
             "fasting, surgicalStress, hemoglobin, minHemoglobin, crystalloids, " +
             "colloids, hemoderivatives, drugInfusions, diuresis, aspiration, " +
-            "compresses, levinsTube, description, duration, Reports.created, Reports.updated FROM Reports INNER JOIN Surgeries " +
-            "on Reports.surgeryId = Surgeries.id INNER JOIN (SELECT Patients.id, firstName, " +
-            "lastName, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, " +
-            "minHemoglobin, crystalloids, colloids, hemoderivatives, drugInfusions, diuresis, " +
-            "aspiration, compresses, levinsTube from Patients INNER JOIN Intakes on " +
-            "Patients.intakeId = Intakes.id INNER JOIN Outputs on Patients.outputId = Outputs.id) " +
-            "P on P.id = Reports.patientId WHERE Reports.id = :id"
+            "compresses, levinsTube, description, duration, created, updated FROM Reports " +
+            "WHERE Reports.id = :id"
 
-    internal const val QUERY_GET_REPORTS = "SELECT Reports.id AS id, firstName, lastName, weight, sex, bloodVolume, " +
+    internal const val QUERY_GET_REPORTS = "SELECT id, firstName, lastName, age, weight, sex, bloodVolume, " +
             "fasting, surgicalStress, hemoglobin, minHemoglobin, crystalloids, " +
             "colloids, hemoderivatives, drugInfusions, diuresis, aspiration, " +
-            "compresses, levinsTube, description, duration, Reports.created, Reports.updated FROM Reports INNER JOIN Surgeries " +
-            "on Reports.surgeryId = Surgeries.id INNER JOIN (SELECT Patients.id, firstName, " +
-            "lastName, weight, sex, bloodVolume, fasting, surgicalStress, hemoglobin, " +
-            "minHemoglobin, crystalloids, colloids, hemoderivatives, drugInfusions, diuresis, " +
-            "aspiration, compresses, levinsTube from Patients INNER JOIN Intakes on " +
-            "Patients.intakeId = Intakes.id INNER JOIN Outputs on Patients.outputId = Outputs.id) " +
-            "P on P.id = Reports.patientId"
+            "compresses, levinsTube, description, duration, created, updated FROM Reports"
 }

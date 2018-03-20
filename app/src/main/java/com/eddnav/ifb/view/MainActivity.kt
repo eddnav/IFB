@@ -3,11 +3,7 @@ package com.eddnav.ifb.view
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.R
-import com.eddnav.ifb.data.report.repository.ReportRepository
 import com.eddnav.ifb.view.report.EditReportActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*

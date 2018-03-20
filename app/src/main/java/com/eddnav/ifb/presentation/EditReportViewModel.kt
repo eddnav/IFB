@@ -21,12 +21,12 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
     var report: MutableLiveData<Report> = MutableLiveData()
         private set
 
-    var saveSuccessEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
+    var successEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
         private set
 
     fun load(id: Long? = null) {
         if (id !== null) {
-            launch (UI) {
+            launch(UI) {
                 Transformations.map(repository.getAsync(id).await(), {
                     report.value = it
                 })
@@ -39,8 +39,9 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     fun save(report: Report) {
         launch(UI) {
-            repository.addAsync(report).await()
-            saveSuccessEvent.call()
+            if (report.id == null) repository.addAsync(report).await()
+            else repository.updateAsync(report).await()
+            successEvent.call()
         }
     }
 }

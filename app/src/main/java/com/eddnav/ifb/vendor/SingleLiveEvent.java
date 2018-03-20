@@ -34,7 +34,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * explicit call to setValue() or call().
  * <p>
  * Note that only one observer is going to be notified of changes.
- *
+ * <p>
  * TODO: Remember to remove this if it ever gets added to the architecture components.
  */
 public class SingleLiveEvent<T> extends MutableLiveData<T> {

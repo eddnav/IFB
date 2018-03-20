@@ -54,7 +54,7 @@ class EditReportFragment : Fragment() {
             savedInstanceState ?: populate()
         })
 
-        mViewModel.saveSuccessEvent.observe(this, Observer {
+        mViewModel.successEvent.observe(this, Observer {
             mListener?.onSaveSuccess()
         })
 

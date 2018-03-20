@@ -9,7 +9,7 @@ import org.threeten.bp.OffsetDateTime
 /**
  * @author Eduardo Naveda
  */
-class Report(var id: Long, var patient: Patient, var surgery: Surgery, var hydrationSchedule: HydrationSchedule, var created: OffsetDateTime?, var updated: OffsetDateTime?) {
+class Report(var id: Long?, var patient: Patient, var surgery: Surgery, var hydrationSchedule: HydrationSchedule, var created: OffsetDateTime?, var updated: OffsetDateTime?) {
 
     var minimumAllowableBloodLoss: Double = 0.0
         get() = ((this.patient.hemoglobin - this.patient.minHemoglobin) / this.patient.hemoglobin) * this.patient.bloodVolume * this.patient.weight
@@ -31,11 +31,11 @@ class Report(var id: Long, var patient: Patient, var surgery: Surgery, var hydra
         get() = this.patient.intake.total - this.patient.output.total
         private set
 
-    constructor(patient: Patient, surgery: Surgery, hydrationSchedule: HydrationSchedule) : this(0, patient, surgery, hydrationSchedule, null, null)
+    constructor(patient: Patient, surgery: Surgery, hydrationSchedule: HydrationSchedule) : this(null, patient, surgery, hydrationSchedule, null, null)
 
     companion object {
 
-        fun default() : Report {
+        fun default(): Report {
             val patient = Patient("", "", 10, 60.0,
                     "f", 70.0, 0.0, 0, 13.5,
                     13.5,

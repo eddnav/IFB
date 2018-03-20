@@ -7,7 +7,6 @@ import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import com.eddnav.ifb.cache.report.Constants
 import com.eddnav.ifb.cache.report.model.ReportEntity
-import com.eddnav.ifb.cache.report.representation.FullReport
 
 /**
  * @author Eduardo Naveda
@@ -16,13 +15,10 @@ import com.eddnav.ifb.cache.report.representation.FullReport
 interface ReportDAO {
 
     @Query(Constants.QUERY_GET_REPORT)
-    fun get(id: Long): LiveData<FullReport>
+    fun get(id: Long): LiveData<ReportEntity>
 
     @Query(Constants.QUERY_GET_REPORTS)
-    fun getAll(): LiveData<List<FullReport>>
-
-    @Query(Constants.QUERY_GET_REPORTS)
-    fun getAllFail(): List<FullReport> // TODO: Remove
+    fun getAll(): LiveData<List<ReportEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun add(report: ReportEntity): Long
