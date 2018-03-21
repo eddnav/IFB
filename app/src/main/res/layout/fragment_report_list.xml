@@ -7,9 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
-    android:paddingEnd="?listPreferredItemPaddingRight"
-    android:paddingStart="?listPreferredItemPaddingLeft"
-    android:paddingTop="@dimen/list_top_padding"
+    android:paddingTop="@dimen/list_item_top_padding"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.eddnav.ifb.view.report.ReportListFragment"
     tools:listitem="@layout/fragment_report_list_item" />

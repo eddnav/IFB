@@ -19,5 +19,5 @@
     <dimen name="form_side_icon_end_margin">16dp</dimen>
 
     <dimen name="form_text_size">16sp</dimen>
-    <dimen name="list_top_padding">8dp</dimen>
+    <dimen name="list_item_top_padding">8dp</dimen>
 </resources>
