@@ -45,4 +45,7 @@
     <string name="validation_greater_than_0">Should be greater than 0</string>
     <string name="action_title_save">Save</string>
     <string name="reports_patient_avatar">Report\'s Patient Avatar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

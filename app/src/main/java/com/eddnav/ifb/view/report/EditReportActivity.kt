@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import com.eddnav.ifb.R
 import kotlinx.android.synthetic.main.toolbar.*
 
+/**
+ * @author Eduardo Naveda
+ */
 class EditReportActivity : AppCompatActivity(), EditReportFragment.OnFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
