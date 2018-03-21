@@ -55,7 +55,7 @@ object HourlyHydrationSpec : SubjectSpek<HydrationSchedule>({
                 subject.insensibleLosses[3] shouldEqualTo 10.0
             }
         }
-        on("getting pathological fasting hydration schedule") {
+        on("getting preoperative fasting hydration schedule") {
             it("should be an array describing 3 hours") {
                 subject.fasting.size shouldEqualTo 4
             }

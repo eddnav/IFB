@@ -1,13 +1,629 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eddnav.ifb.view.report.ReportDetailFragment">
+    tools:context="com.eddnav.ifb.view.report.ReportDetailFragment"
+    tools:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/patientIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_patient_icon"
+        app:layout_constraintEnd_toStartOf="@+id/fullName"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fullName"
+        app:srcCompat="@drawable/ic_person_24dp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/fullName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/patientIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pat Noobie" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/basicInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/fullName"
+        app:layout_constraintTop_toBottomOf="@id/fullName"
+        tools:text="Female • Age: 16 • 50 kg" />
+
+    <ImageView
+        android:id="@+id/surgeryIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_surgery_icon"
+        app:layout_constraintEnd_toStartOf="@+id/surgeryLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/surgeryLabel"
+        app:srcCompat="@drawable/ic_surgery_24dp" />
+
+    <TextView
+        android:id="@+id/surgeryLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_surgery"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/surgeryIcon"
+        app:layout_constraintTop_toBottomOf="@id/basicInfo" />
+
+    <TextView
+        android:id="@+id/surgeryDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/surgeryLabel"
+        app:layout_constraintTop_toBottomOf="@id/surgeryLabel"
+        tools:text="Appendectomy with X and Y special considerations due to O and P." />
+
+    <TextView
+        android:id="@+id/surgeryDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/surgeryDescription"
+        app:layout_constraintTop_toBottomOf="@id/surgeryDescription"
+        tools:text="Duration: 10.5 hr" />
+
+    <ImageView
+        android:id="@+id/generalIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_general"
+        app:layout_constraintEnd_toStartOf="@+id/generalLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/generalLabel"
+        app:srcCompat="@drawable/ic_general_24dp" />
+
+    <TextView
+        android:id="@+id/generalLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_general"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/generalIcon"
+        app:layout_constraintTop_toBottomOf="@id/surgeryDuration" />
+
+    <TextView
+        android:id="@+id/bloodVolume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/generalLabel"
+        app:layout_constraintTop_toBottomOf="@id/generalLabel"
+        tools:text="Blood Volume: 100 ml/kg" />
+
+    <TextView
+        android:id="@+id/hemoglobin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/bloodVolume"
+        app:layout_constraintTop_toBottomOf="@id/bloodVolume"
+        tools:text="Hemoglobin: 13.5 g/dl • Minimum: 13.2 g/dl" />
+
+    <TextView
+        android:id="@+id/fasting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hemoglobin"
+        app:layout_constraintTop_toBottomOf="@id/hemoglobin"
+        tools:text="Preoperative Fasting: 2 hr" />
+
+    <TextView
+        android:id="@+id/surgicalStress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/fasting"
+        app:layout_constraintTop_toBottomOf="@id/fasting"
+        tools:text="Surgical Stress: 1 out of 10" />
+
+    <ImageView
+        android:id="@+id/scheduleIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_hourly_hydration"
+        app:layout_constraintEnd_toStartOf="@+id/hourlyHydrationLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hourlyHydrationLabel"
+        app:srcCompat="@drawable/ic_schedule_24dp" />
+
+    <TextView
+        android:id="@+id/hourlyHydrationLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_hourly_hydration"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/scheduleIcon"
+        app:layout_constraintTop_toBottomOf="@id/surgicalStress" />
+
+    <TableLayout
+        android:id="@+id/hourlyHydrationTable"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+d/hourlyHydrationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/hourlyHydrationLabel">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_header_min_height">
+
+            <TextView
+                style="@style/IFBDiagonalHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_hours" />
+
+            <TextView
+                style="@style/IFBTableHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_first_hour_cc" />
+
+            <TextView
+                style="@style/IFBTableHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_second_hour_cc" />
+
+            <TextView
+                style="@style/IFBTableHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_third_hour_cc" />
+
+            <TextView
+                style="@style/IFBTableHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_fourth_hour_cc" />
+
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineDivider" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_content_min_height">
+
+            <TextView
+                style="@style/IFBTableSideHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="@string/table_header_base_hydration" />
+
+            <TextView
+                android:id="@+id/bh1h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="2" />
+
+            <TextView
+                android:id="@+id/bh2h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="23" />
+
+            <TextView
+                android:id="@+id/bh3h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="11" />
+
+            <TextView
+                android:id="@+id/bh4h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="7" />
+
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineDivider" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_content_min_height">
+
+            <TextView
+                style="@style/IFBTableSideHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                tools:text="@string/table_header_insensible_losses" />
+
+            <TextView
+                android:id="@+id/il1h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="21" />
+
+            <TextView
+                android:id="@+id/il2h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="33" />
+
+            <TextView
+                android:id="@+id/il3h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="4" />
+
+            <TextView
+                android:id="@+id/il4h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="2" />
+
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineDivider" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_content_min_height">
+
+            <TextView
+                style="@style/IFBTableSideHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                tools:text="@string/table_header_fasting" />
+
+            <TextView
+                android:id="@+id/pf1h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="9" />
+
+            <TextView
+                android:id="@+id/pf2h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="91" />
+
+            <TextView
+                android:id="@+id/pf3h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="13" />
+
+            <TextView
+                android:id="@+id/pf4h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="17" />
+
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineDivider" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_content_min_height">
+
+            <TextView
+                style="@style/IFBTableSideHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                tools:text="@string/table_header_surgical_stress" />
+
+            <TextView
+                android:id="@+id/ss1h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="7" />
+
+            <TextView
+                android:id="@+id/ss2h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="9" />
+
+            <TextView
+                android:id="@+id/ss3h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="83" />
+
+            <TextView
+                android:id="@+id/ss4h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="32" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/intakesIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_intake_icon"
+        app:layout_constraintEnd_toStartOf="@+id/intakesLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/intakesLabel"
+        app:srcCompat="@drawable/ic_intake_24dp" />
+
+    <TextView
+        android:id="@+id/intakesLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_intakes"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/intakesIcon"
+        app:layout_constraintTop_toBottomOf="@+id/hourlyHydrationTable" />
+
+    <TextView
+        android:id="@+id/crystalloids"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/intakesLabel"
+        app:layout_constraintTop_toBottomOf="@id/intakesLabel"
+        tools:text="Crystalloids: 10 cc" />
+
+    <TextView
+        android:id="@+id/colloids"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/crystalloids"
+        app:layout_constraintTop_toBottomOf="@id/crystalloids"
+        tools:text="Colloids: 3 cc" />
+
+    <TextView
+        android:id="@+id/hemoderivatives"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/colloids"
+        app:layout_constraintTop_toBottomOf="@id/colloids"
+        tools:text="Hemoderivatives: 43 cc" />
+
+    <TextView
+        android:id="@+id/drugInfusions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hemoderivatives"
+        app:layout_constraintTop_toBottomOf="@id/hemoderivatives"
+        tools:text="Drug Infusions: 2 cc" />
+
+    <View
+        android:id="@+id/intakeDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/lineDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/drugInfusions"
+        app:layout_constraintTop_toBottomOf="@id/drugInfusions" />
+
+    <TextView
+        android:id="@+id/totalIntake"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/intakeDivider"
+        app:layout_constraintTop_toBottomOf="@id/intakeDivider"
+        tools:text="Total: 58 cc" />
+
+    <ImageView
+        android:id="@+id/outputsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_output_icon"
+        app:layout_constraintEnd_toStartOf="@+id/outputsLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/outputsLabel"
+        app:srcCompat="@drawable/ic_output_24dp" />
+
+    <TextView
+        android:id="@+id/outputsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_outputs"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/outputsIcon"
+        app:layout_constraintTop_toBottomOf="@+id/totalIntake" />
+
+    <TextView
+        android:id="@+id/diuresis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/outputsLabel"
+        app:layout_constraintTop_toBottomOf="@id/outputsLabel"
+        tools:text="Diuresis: 1 cc" />
+
+    <TextView
+        android:id="@+id/aspiration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/diuresis"
+        app:layout_constraintTop_toBottomOf="@id/diuresis"
+        tools:text="Aspiration: 3 cc" />
+
+    <TextView
+        android:id="@+id/compresses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/aspiration"
+        app:layout_constraintTop_toBottomOf="@id/aspiration"
+        tools:text="Compresses: 32 cc" />
+
+    <TextView
+        android:id="@+id/levinsTube"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/compresses"
+        app:layout_constraintTop_toBottomOf="@id/compresses"
+        tools:text="Levin's Tube: 4 cc" />
+
+    <View
+        android:id="@+id/outputsDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/lineDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/levinsTube"
+        app:layout_constraintTop_toBottomOf="@id/levinsTube" />
+
+    <TextView
+        android:id="@+id/totalOutput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/outputsDivider"
+        app:layout_constraintTop_toBottomOf="@id/outputsDivider"
+        tools:text="Total: 40 cc" />
+
+    <ImageView
+        android:id="@+id/resultsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/detail_side_icon_end_margin"
+        android:layout_marginTop="@dimen/detail_side_icon_top_margin"
+        android:contentDescription="@string/description_results"
+        app:layout_constraintEnd_toStartOf="@+id/resultsLabel"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resultsLabel"
+        app:srcCompat="@drawable/ic_result_24dp" />
+
+    <TextView
+        android:id="@+id/resultsLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_section_top_margin"
+        android:text="@string/label_results"
+        android:textAppearance="@style/IFBTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/resultsIcon"
+        app:layout_constraintTop_toBottomOf="@+id/totalOutput" />
+
+    <TextView
+        android:id="@+id/ifb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/resultsLabel"
+        app:layout_constraintTop_toBottomOf="@id/resultsLabel"
+        tools:text="Intraoperative Fluid Balance: -1 cc" />
+
+    <TextView
+        android:id="@+id/mabl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ifb"
+        app:layout_constraintTop_toBottomOf="@id/ifb"
+        tools:text="Minimum Allowable Blood Loss: 32 cc" />
+
+    <TextView
+        android:id="@+id/hourlyDiuresis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mabl"
+        app:layout_constraintTop_toBottomOf="@id/mabl"
+        tools:text="Hourly Diuresis: 11 cc/hr" />
+
+    <TextView
+        android:id="@+id/urineOutput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hourlyDiuresis"
+        app:layout_constraintTop_toBottomOf="@id/hourlyDiuresis"
+        tools:text="Urine Output: 4 cc/kg/hr" />
+
+    <TextView
+        android:id="@+id/intakeSupply"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/urineOutput"
+        app:layout_constraintTop_toBottomOf="@id/urineOutput"
+        tools:text="Intake Supply: 40 cc/kg" />
+
+
+</android.support.constraint.ConstraintLayout>

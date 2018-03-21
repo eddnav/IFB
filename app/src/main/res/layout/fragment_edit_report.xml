@@ -185,12 +185,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/medicalInfoIcon"
+            android:id="@+id/generalIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/form_side_icon_top_margin"
-            android:background="@drawable/ic_medical_info_24dp"
-            android:contentDescription="@string/description_medical_info"
+            android:background="@drawable/ic_general_24dp"
+            android:contentDescription="@string/description_general"
             app:layout_constraintEnd_toStartOf="@id/bloodVolumeInputLayout"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
@@ -203,7 +203,7 @@
             android:layout_marginStart="@dimen/form_side_icon_end_margin"
             android:layout_marginTop="@dimen/form_vertical_section_spacing"
             app:layout_constraintEnd_toStartOf="@+id/fastingInputLayout"
-            app:layout_constraintStart_toEndOf="@id/medicalInfoIcon"
+            app:layout_constraintStart_toEndOf="@id/generalIcon"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText
@@ -230,7 +230,7 @@
                 android:id="@+id/fasting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/label_pathological_fasting"
+                android:hint="@string/label_fasting"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
                 app:suffix="@string/suffix_hr"
@@ -306,7 +306,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/intakeIcon"
+            android:id="@+id/intakesIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/form_side_icon_end_margin"
@@ -324,7 +324,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/form_vertical_section_spacing"
             app:layout_constraintEnd_toStartOf="@id/colloidsInputLayout"
-            app:layout_constraintStart_toEndOf="@+id/intakeIcon"
+            app:layout_constraintStart_toEndOf="@+id/intakesIcon"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText
@@ -407,7 +407,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/outputIcon"
+            android:id="@+id/outputsIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/form_side_icon_end_margin"
@@ -425,7 +425,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/form_vertical_section_spacing"
             app:layout_constraintEnd_toStartOf="@id/aspirationInputLayout"
-            app:layout_constraintStart_toEndOf="@+id/outputIcon"
+            app:layout_constraintStart_toEndOf="@+id/outputsIcon"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText

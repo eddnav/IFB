@@ -26,7 +26,7 @@ class HydrationSchedule(private var patient: Patient) {
         private set
 
     /**
-     * @property fasting Array describing four hours of hydration due to pathological fasting.
+     * @property fasting Array describing four hours of hydration due to preoperative fasting.
      */
     var fasting: DoubleArray = doubleArrayOf(0.0, 0.0, 0.0, 0.0)
         get() = doubleArrayOf(patient.weight * patient.fasting,

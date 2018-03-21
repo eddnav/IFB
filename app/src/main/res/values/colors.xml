@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#00675b</color>
     <color name="colorAccent">#ec407a</color>
 
-    <color name="inputText">#DF000000</color>
-    <color name="listMainText">#DF000000</color>
+    <color name="inputText">#DE000000</color>
+    <color name="tableHeaderText">#8C000000</color>
+    <color name="tableContentText">#DE000000</color>
+    <color name="listMainText">#DE000000</color>
     <color name="listSecondaryText">#8C000000</color>
+
+    <color name="lineDivider">#1F000000</color>
 
     <color name="defaultAvatarBackground">#8C000000</color>
 </resources>

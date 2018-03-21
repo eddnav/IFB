@@ -4,7 +4,9 @@
 
     <string name="title_reports">Reports</string>
     <string name="title_new_report">New Report</string>
-    <string name="title_edit_report">Edit Reportt</string>
+    <string name="title_edit_report">Edit Report</string>
+
+    <string name="action_title_save">Save</string>
 
     <string name="label_first_name">First Name</string>
     <string name="label_last_name">Last Name</string>
@@ -13,7 +15,7 @@
     <string name="label_surgery_description">Surgery Description</string>
     <string name="label_surgery_duration">Surgery Duration</string>
     <string name="label_blood_volume">Blood Volume</string>
-    <string name="label_pathological_fasting">Pathological Fasting</string>
+    <string name="label_fasting">Preoperative Fasting</string>
     <string name="label_surgical_stress">Surgical Stress</string>
     <string name="label_hemoglobin">Hemoglobin</string>
     <string name="label_min_hemoglobin">Min. Hemoglobin</string>
@@ -25,6 +27,33 @@
     <string name="label_aspiration">Aspiration</string>
     <string name="label_compresses">Compresses</string>
     <string name="label_levins_tube">Levin\'s Tube</string>
+    <string name="label_surgery">Surgery</string>
+    <string name="label_general">General</string>
+    <string name="label_hourly_hydration">Hourly Hydration</string>
+    <string name="label_intakes">Intakes</string>
+    <string name="label_outputs">Outputs</string>
+    <string name="label_results">Results</string>
+
+    <string name="value_basic_info">%1$s • Age: %2$d • %3$.1f kg</string>
+    <string name="value_surgery_duration">Duration: %1$.1f hr</string>
+    <string name="value_blood_volume">Blood Volume: %1$.1f ml/kg</string>
+    <string name="value_hemoglobin">Hemoglobin: %1$.1f g/dl • Minimum: %2$.1f g/dl</string>
+    <string name="value_fasting">Preoperative Fasting: %1$.1f hr</string>
+    <string name="value_surgical_stress">Surgical Stress: %1$d out of %2$d</string>
+    <string name="value_crystalloids">Crystalloids: %1$.1f cc</string>
+    <string name="value_colloids">Colloids: %1$.1f cc</string>
+    <string name="value_hemoderivatives">Hemoderivatives: %1$.1f cc</string>
+    <string name="value_drug_infusions">Drug Infusions: %1$.1f cc</string>
+    <string name="value_diuresis">Diuresis: %1$.1f cc</string>
+    <string name="value_aspiration">Aspiration: %1$.1f cc</string>
+    <string name="value_compresses">Compresses: %1$.1f cc</string>
+    <string name="value_levins_tube">Levin\'s Tube: %1$.1f cc</string>
+    <string name="value_total">Total: %1$.1f cc</string>
+    <string name="value_ifb">Intraoperative Fluid Balance: %1$.1f cc</string>
+    <string name="value_mabl">Minimum Allowable Blood Loss: %1$.1f cc</string>
+    <string name="value_hourly_diuresis">Hourly Diuresis: %1$.1f cc/hr</string>
+    <string name="value_urine_output">Urine Output: %1$.1f cc/kg/hr</string>
+    <string name="value_intake_supply">Intake Supply: %1$.1f cc/kg</string>
 
     <string name="suffix_kg">kg</string>
     <string name="suffix_hr">hr</string>
@@ -34,18 +63,27 @@
 
     <string name="description_patient_icon">Patient</string>
     <string name="description_surgery_icon">Surgery</string>
-    <string name="description_medical_info">Medical Info</string>
+    <string name="description_general">General Medical Info</string>
     <string name="description_intake_icon">Intakes</string>
     <string name="description_output_icon">Outputs</string>
+    <string name="description_reports_patient_avatar">Report\'s Patient Avatar</string>
+    <string name="description_hourly_hydration">Hourly Hydration Schedule</string>
+    <string name="description_results">Results</string>
+
+    <string name="table_header_hours">Hours</string>
+    <string name="table_header_first_hour_cc">1st (cc)</string>
+    <string name="table_header_second_hour_cc">2nd (cc)</string>
+    <string name="table_header_third_hour_cc">3rd (cc)</string>
+    <string name="table_header_fourth_hour_cc">4th (cc)</string>
+    <string name="table_header_base_hydration">Base Hydration</string>
+    <string name="table_header_insensible_losses">Insensible Losses</string>
+    <string name="table_header_fasting">Preoperative Fasting</string>
+    <string name="table_header_surgical_stress">Surgical Stress</string>
 
     <string name="validation_not_blank">Should not be blank</string>
     <string name="validation_valid_integer">Should be a valid integer</string>
     <string name="validation_valid_decimal">Should be a valid decimal</string>
     <string name="validation_equal_or_greater_than_0">Should be greater or equal than 0</string>
     <string name="validation_greater_than_0">Should be greater than 0</string>
-    <string name="action_title_save">Save</string>
-    <string name="reports_patient_avatar">Report\'s Patient Avatar</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="validation_greater_than_x">Should not be greater than %1$d</string>
 </resources>

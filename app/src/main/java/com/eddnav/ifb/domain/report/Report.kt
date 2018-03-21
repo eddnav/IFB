@@ -11,22 +11,37 @@ import org.threeten.bp.OffsetDateTime
  */
 class Report(var id: Long?, var patient: Patient, var surgery: Surgery, var hydrationSchedule: HydrationSchedule, var created: OffsetDateTime?, var updated: OffsetDateTime?) {
 
+    /**
+     * In cc.
+     */
     var minimumAllowableBloodLoss: Double = 0.0
         get() = ((this.patient.hemoglobin - this.patient.minHemoglobin) / this.patient.hemoglobin) * this.patient.bloodVolume * this.patient.weight
         private set
 
+    /**
+     * In cc/hr.
+     */
     var hourlyDiuresis: Double = 0.0
         get() = this.patient.output.diuresis / this.surgery.duration
         private set
 
+    /**
+     * In cc/kg/hr.
+     */
     var urineOutput: Double = 0.0
         get() = this.hourlyDiuresis / this.patient.weight
         private set
 
+    /**
+     * In cc/kg.
+     */
     var intakeSupply: Double = 0.0
         get() = this.patient.intake.total / this.patient.weight
         private set
 
+    /**
+     * In cc.
+     */
     var finalFluidBalance: Double = 0.0
         get() = this.patient.intake.total - this.patient.output.total
         private set

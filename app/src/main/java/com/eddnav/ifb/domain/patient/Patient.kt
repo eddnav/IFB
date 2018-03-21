@@ -12,7 +12,7 @@ import com.eddnav.ifb.domain.output.Output
  * @param weight Patient's weight, measured in kg.
  * @param sex Patient's sex, should be 'f' or 'm'.
  * @param bloodVolume Blood volume per kg, measured in ml/kg.
- * @param fasting Hours elapsed in pathological fasting state.
+ * @param fasting Hours elapsed in preoperative fasting state.
  * @param surgicalStress Measured surgical stress.
  * @param hemoglobin Hemoglobin, measured in g/dl.
  * @param minHemoglobin Minimum final allowable hemoglobin, measured in g/dl.
@@ -72,7 +72,7 @@ class Patient(var firstName: String, var lastName: String,
         }
 
     /**
-     *  @property fasting Hours elapsed in pathological fasting state.
+     *  @property fasting Hours elapsed in preoperative fasting state.
      */
     var fasting: Double = 0.0
         set(value) {
