@@ -14,5 +14,5 @@ object Constants {
     internal const val QUERY_GET_REPORTS = "SELECT id, firstName, lastName, age, weight, sex, bloodVolume, " +
             "fasting, surgicalStress, hemoglobin, minHemoglobin, crystalloids, " +
             "colloids, hemoderivatives, drugInfusions, diuresis, aspiration, " +
-            "compresses, levinsTube, description, duration, created, updated FROM Reports"
+            "compresses, levinsTube, description, duration, created, updated FROM Reports ORDER BY created DESC"
 }

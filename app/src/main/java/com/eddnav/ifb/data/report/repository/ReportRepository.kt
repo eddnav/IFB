@@ -15,6 +15,8 @@ class ReportRepository(var app: IFBApp) { // TODO: disgusting, remember to move 
 
     /**
      * Returns a list of all the saved reports.
+     *
+     * Inverse-ordered by create date
      */
     fun getAll(): LiveData<List<Report>> = Transformations.map(app.database.reportDAO().getAll(), {
             it.map({
