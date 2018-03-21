@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.eddnav.ifb.R
 import com.eddnav.ifb.view.report.EditReportActivity
+import com.eddnav.ifb.view.report.ReportListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -18,12 +19,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().add(
+                    R.id.content, ReportListFragment.newInstance()
+            ).commit()
+        }
+
         fab.setOnClickListener {
             startActivity(Intent(this, EditReportActivity::class.java))
         }
-
-        //val repository = ReportRepository(this.application as IFBApp)
-        //val reports = repository.getAllFail()
-        print("hello world")
     }
 }

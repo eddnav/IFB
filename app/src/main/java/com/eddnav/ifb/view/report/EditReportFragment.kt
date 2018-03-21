@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_edit_report.*
  * UI for saving/editing reports. No data binding as of now, a copy of the model is kept as
  * UI state, then it's passed back to the view model.
  *
- * // TODO: as we aren't using two way bindings, the view model has no clue of what's happening in the UI, please save and load instance state accordingly.
  * @author Eduardo Naveda
  */
 class EditReportFragment : Fragment() {
@@ -364,7 +363,7 @@ class EditReportFragment : Fragment() {
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
-         * @param reportId Id of the editing subject.
+         * @param id Id of the editing subject.
          * @return A new instance of fragment EditReportFragment.
          */
         fun newInstance(id: Long): EditReportFragment {
@@ -377,10 +376,7 @@ class EditReportFragment : Fragment() {
 
         /**
          * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param reportId Id of the editing subject, omit for a new report.
-         * @return A new instance of fragment EditReportFragment.
+         * this fragment.
          */
         fun newInstance(): EditReportFragment {
             return EditReportFragment()

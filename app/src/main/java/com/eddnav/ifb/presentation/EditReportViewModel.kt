@@ -26,11 +26,9 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     fun load(id: Long? = null) {
         if (id !== null) {
-            launch(UI) {
-                Transformations.map(repository.getAsync(id).await(), {
-                    report.value = it
-                })
-            }
+            Transformations.map(repository.get(id), {
+                report.value = it
+            })
         } else {
             report.value = Report.default()
         }
@@ -39,8 +37,7 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     fun save(report: Report) {
         launch(UI) {
-            if (report.id == null) repository.addAsync(report).await()
-            else repository.updateAsync(report).await()
+            repository.addAsync(report).await()
             successEvent.call()
         }
     }

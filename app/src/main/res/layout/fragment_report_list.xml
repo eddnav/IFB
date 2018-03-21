@@ -6,8 +6,9 @@
     android:name="com.eddnav.ifb.view.report.ReportListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/standard_margin"
-    android:layout_marginRight="@dimen/standard_margin"
+    android:paddingTop="@dimen/list_top_padding"
+    android:paddingStart="?listPreferredItemPaddingLeft"
+    android:paddingEnd="?listPreferredItemPaddingRight"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.eddnav.ifb.view.report.ReportListFragment"
     tools:listitem="@layout/fragment_report_list_item" />

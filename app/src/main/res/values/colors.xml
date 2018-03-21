@@ -5,4 +5,8 @@
     <color name="colorAccent">#ec407a</color>
 
     <color name="inputText">#DF000000</color>
+    <color name="listMainText">#DF000000</color>
+    <color name="listSecondaryText">#8C000000</color>
+
+    <color name="defaultAvatarBackground">#8C000000</color>
 </resources>

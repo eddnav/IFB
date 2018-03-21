@@ -44,4 +44,5 @@
     <string name="validation_equal_or_greater_than_0">Should be greater or equal than 0</string>
     <string name="validation_greater_than_0">Should be greater than 0</string>
     <string name="action_title_save">Save</string>
+    <string name="reports_patient_avatar">Report\'s Patient Avatar</string>
 </resources>

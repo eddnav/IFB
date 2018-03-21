@@ -1,5 +1,6 @@
 package com.eddnav.ifb.data.report.repository
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.cache.report.converter.ReportConverter
@@ -15,24 +16,21 @@ class ReportRepository(var app: IFBApp) { // TODO: disgusting, remember to move 
     /**
      * Returns a list of all the saved reports.
      */
-    fun getAllAsync() = async {
-        Transformations.map(app.database.reportDAO().getAll(), {
+    fun getAll(): LiveData<List<Report>> = Transformations.map(app.database.reportDAO().getAll(), {
             it.map({
                 ReportConverter.toDomain(it)
             })
         })
-    }
+
 
     /**
      * Returns a report for the given id.
      *
      * @param id Id of the report to get.
      */
-    fun getAsync(id: Long) = async {
-        Transformations.map(app.database.reportDAO().get(id), {
-            ReportConverter.toDomain(it)
-        })
-    }
+    fun get(id: Long): LiveData<Report> = Transformations.map(app.database.reportDAO().get(id), {
+                ReportConverter.toDomain(it)
+            })
 
     /**
      * Adds a new report.

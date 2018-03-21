@@ -1,101 +1,63 @@
 package com.eddnav.ifb.view.report
 
-import android.content.Context
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.eddnav.ifb.R
 import com.eddnav.ifb.domain.report.Report
-
+import com.eddnav.ifb.presentation.ReportListViewModel
 
 /**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
+ * @author Eduardo Naveda
  */
 class ReportListFragment : Fragment() {
-    // TODO: Customize parameters
-    private var mColumnCount = 1
-    private var mListener: OnListFragmentInteractionListener? = null
+
+    private lateinit var mViewModel: ReportListViewModel
+    private lateinit var mAdapter: ReportRecyclerViewAdapter
+
+    private var mReports: MutableList<Report> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (arguments != null) {
-            mColumnCount = arguments!!.getInt(ARG_COLUMN_COUNT)
-        }
+        mViewModel = ViewModelProviders.of(this).get(ReportListViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_report_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_report_list, container, false) as RecyclerView
+        view.layoutManager = LinearLayoutManager(context)
+        mAdapter = ReportRecyclerViewAdapter(mReports, {
+            //to detail
+        })
+        view.adapter = mAdapter
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            val context = view.getContext()
-            if (mColumnCount <= 1) {
-                view.layoutManager = LinearLayoutManager(context)
-            } else {
-                view.layoutManager = GridLayoutManager(context, mColumnCount)
-            }
-            //view.adapter = ReportRecyclerViewAdapter(List(), mListener)
-        }
         return view
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            mListener = context
-        } else {
-            throw RuntimeException(context!!.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mListener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
-     */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: Report)
+        mViewModel.reports.observe(this, Observer<List<Report>> {
+            mReports.clear()
+            mReports.addAll(it!!)
+            mAdapter.notifyDataSetChanged()
+        })
     }
 
     companion object {
 
-        // TODO: Customize parameter argument names
-        private val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        fun newInstance(columnCount: Int): ReportListFragment {
-            val fragment = ReportListFragment()
-            val args = Bundle()
-            args.putInt(ARG_COLUMN_COUNT, columnCount)
-            fragment.arguments = args
-            return fragment
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment.
+         */
+        fun newInstance(): ReportListFragment {
+            return ReportListFragment()
         }
     }
 }
