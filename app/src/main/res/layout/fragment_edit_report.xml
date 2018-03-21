@@ -426,7 +426,7 @@
             android:layout_marginTop="@dimen/form_vertical_section_spacing"
             app:layout_constraintEnd_toStartOf="@id/aspirationInputLayout"
             app:layout_constraintStart_toEndOf="@+id/outputIcon"
-            app:layout_constraintTop_toBottomOf="@+id/hemoderivativesInputLayout">
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.eddnav.ifb.view.custom.BetterTextInputEditText
                 android:id="@+id/diuresis"
