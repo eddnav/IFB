@@ -50,12 +50,12 @@ class Patient(var firstName: String, var lastName: String,
             field = value
         }
     /**
-     * @property sex Patient's sex, should be 'f' or 'm'.
+     * @property sex Patient's sex, should be [SEX_FEMALE] or [SEX_MALE]'.
      */
     var sex: String = ""
         set(value) {
-            if (value != "m" && value != "f") {
-                throw IllegalArgumentException("Sex should be \"f\" or \"m\"")
+            if (value != SEX_FEMALE && value != SEX_MALE) {
+                throw IllegalArgumentException("Sex should be \"$SEX_FEMALE\" or \"$SEX_MALE\"")
             }
             field = value
         }
@@ -132,6 +132,8 @@ class Patient(var firstName: String, var lastName: String,
     val fullName: String = "$firstName $lastName"
 
     companion object {
+        const val SEX_MALE = "m"
+        const val SEX_FEMALE = "f"
         const val MAX_SURGICAL_STRESS = 10
     }
 }

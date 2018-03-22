@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="title_reports">Reports</string>
+    <string name="title_report">Report</string>
     <string name="title_new_report">New Report</string>
     <string name="title_edit_report">Edit Report</string>
 
@@ -34,26 +35,29 @@
     <string name="label_outputs">Outputs</string>
     <string name="label_results">Results</string>
 
-    <string name="value_basic_info">%1$s • Age: %2$d • %3$.1f kg</string>
-    <string name="value_surgery_duration">Duration: %1$.1f hr</string>
-    <string name="value_blood_volume">Blood Volume: %1$.1f ml/kg</string>
-    <string name="value_hemoglobin">Hemoglobin: %1$.1f g/dl • Minimum: %2$.1f g/dl</string>
-    <string name="value_fasting">Preoperative Fasting: %1$.1f hr</string>
+    <string name="value_2f">%1$.2f</string>
+    <string name="value_basic_info">%1$s • Age: %2$d • %3$.2f kg</string>
+    <string name="value_surgery_duration">Duration: %1$.2f hr</string>
+    <string name="value_blood_volume">Blood Volume: %1$.2f ml/kg</string>
+    <string name="value_hemoglobin">Hemoglobin: %1$.2f g/dl • Minimum: %2$.2f g/dl</string>
+    <string name="value_fasting">Preoperative Fasting: %1$.2f hr</string>
     <string name="value_surgical_stress">Surgical Stress: %1$d out of %2$d</string>
-    <string name="value_crystalloids">Crystalloids: %1$.1f cc</string>
-    <string name="value_colloids">Colloids: %1$.1f cc</string>
-    <string name="value_hemoderivatives">Hemoderivatives: %1$.1f cc</string>
-    <string name="value_drug_infusions">Drug Infusions: %1$.1f cc</string>
-    <string name="value_diuresis">Diuresis: %1$.1f cc</string>
-    <string name="value_aspiration">Aspiration: %1$.1f cc</string>
-    <string name="value_compresses">Compresses: %1$.1f cc</string>
-    <string name="value_levins_tube">Levin\'s Tube: %1$.1f cc</string>
-    <string name="value_total">Total: %1$.1f cc</string>
-    <string name="value_ifb">Intraoperative Fluid Balance: %1$.1f cc</string>
-    <string name="value_mabl">Minimum Allowable Blood Loss: %1$.1f cc</string>
-    <string name="value_hourly_diuresis">Hourly Diuresis: %1$.1f cc/hr</string>
-    <string name="value_urine_output">Urine Output: %1$.1f cc/kg/hr</string>
-    <string name="value_intake_supply">Intake Supply: %1$.1f cc/kg</string>
+    <string name="value_crystalloids">Crystalloids: %1$.2f cc</string>
+    <string name="value_colloids">Colloids: %1$.2f cc</string>
+    <string name="value_hemoderivatives">Hemoderivatives: %1$.2f cc</string>
+    <string name="value_drug_infusions">Drug Infusions: %1$.2f cc</string>
+    <string name="value_diuresis">Diuresis: %1$.2f cc</string>
+    <string name="value_aspiration">Aspiration: %1$.2f cc</string>
+    <string name="value_compresses">Compresses: %1$.2f cc</string>
+    <string name="value_levins_tube">Levin\'s Tube: %1$.2f cc</string>
+    <string name="value_total">Total: %1$.2f cc</string>
+    <string name="value_ffb">Intraoperative Fluid Balance: %1$.2f cc</string>
+    <string name="value_mabl">Minimum Allowable Blood Loss: %1$.2f cc</string>
+    <string name="value_hourly_diuresis">Hourly Diuresis: %1$.2f cc/hr</string>
+    <string name="value_urine_output">Urine Output: %1$.2f cc/kg/hr</string>
+    <string name="value_intake_supply">Intake Supply: %1$.2f cc/kg</string>
+    <string name="value_female">Female</string>
+    <string name="value_male">Male</string>
 
     <string name="suffix_kg">kg</string>
     <string name="suffix_hr">hr</string>
@@ -86,4 +90,5 @@
     <string name="validation_equal_or_greater_than_0">Should be greater or equal than 0</string>
     <string name="validation_greater_than_0">Should be greater than 0</string>
     <string name="validation_greater_than_x">Should not be greater than %1$d</string>
+
 </resources>

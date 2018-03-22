@@ -2,6 +2,7 @@ package com.eddnav.ifb.view.report
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -33,7 +34,9 @@ class ReportListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_report_list, container, false) as RecyclerView
         view.layoutManager = LinearLayoutManager(context)
         mAdapter = ReportRecyclerViewAdapter(mReports, {
-            //to detail
+            val intent = Intent(context, ReportDetailActivity::class.java)
+            intent.putExtra(ReportDetailActivity.ARG_ID, it.id)
+            startActivity(intent)
         })
         view.adapter = mAdapter
 

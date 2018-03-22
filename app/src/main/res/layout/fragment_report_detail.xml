@@ -181,31 +181,31 @@
                 style="@style/IFBDiagonalHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_hours" />
+                android:text="@string/table_header_hours" />
 
             <TextView
                 style="@style/IFBTableHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_first_hour_cc" />
+                android:text="@string/table_header_first_hour_cc" />
 
             <TextView
                 style="@style/IFBTableHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_second_hour_cc" />
+                android:text="@string/table_header_second_hour_cc" />
 
             <TextView
                 style="@style/IFBTableHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_third_hour_cc" />
+                android:text="@string/table_header_third_hour_cc" />
 
             <TextView
                 style="@style/IFBTableHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_fourth_hour_cc" />
+                android:text="@string/table_header_fourth_hour_cc" />
 
         </TableRow>
 
@@ -223,7 +223,7 @@
                 style="@style/IFBTableSideHeaderItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:text="@string/table_header_base_hydration" />
+                android:text="@string/table_header_base_hydration" />
 
             <TextView
                 android:id="@+id/bh1h"
@@ -270,7 +270,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="0dp"
-                tools:text="@string/table_header_insensible_losses" />
+                android:text="@string/table_header_insensible_losses" />
 
             <TextView
                 android:id="@+id/il1h"
@@ -317,31 +317,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="0dp"
-                tools:text="@string/table_header_fasting" />
+                android:text="@string/table_header_fasting" />
 
             <TextView
-                android:id="@+id/pf1h"
+                android:id="@+id/f1h"
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 tools:text="9" />
 
             <TextView
-                android:id="@+id/pf2h"
+                android:id="@+id/f2h"
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 tools:text="91" />
 
             <TextView
-                android:id="@+id/pf3h"
+                android:id="@+id/f3h"
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 tools:text="13" />
 
             <TextView
-                android:id="@+id/pf4h"
+                android:id="@+id/f4h"
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -364,7 +364,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="0dp"
-                tools:text="@string/table_header_surgical_stress" />
+                android:text="@string/table_header_surgical_stress" />
 
             <TextView
                 android:id="@+id/ss1h"
@@ -581,7 +581,7 @@
         app:layout_constraintTop_toBottomOf="@+id/totalOutput" />
 
     <TextView
-        android:id="@+id/ifb"
+        android:id="@+id/ffb"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -594,8 +594,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ifb"
-        app:layout_constraintTop_toBottomOf="@id/ifb"
+        app:layout_constraintStart_toStartOf="@id/ffb"
+        app:layout_constraintTop_toBottomOf="@id/ffb"
         tools:text="Minimum Allowable Blood Loss: 32 cc" />
 
     <TextView

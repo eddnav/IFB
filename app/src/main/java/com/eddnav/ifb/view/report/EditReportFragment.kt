@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.ArrayAdapter
 import com.eddnav.ifb.R
+import com.eddnav.ifb.domain.patient.Patient
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.presentation.EditReportViewModel
 import com.thedeadpixelsociety.passport.Passport
@@ -26,8 +27,6 @@ class EditReportFragment : Fragment() {
 
     private lateinit var mViewModel: EditReportViewModel
     private lateinit var mValidator: Passport
-    private lateinit var mReport: Report
-
     private var mListener: OnFragmentInteractionListener? = null
 
     private var mId: Long? = null
@@ -48,10 +47,13 @@ class EditReportFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mViewModel.report.observe(this, Observer<Report> {
-            mReport = it!!
-            savedInstanceState ?: populate()
-        })
+        if (mId != null) {
+            mViewModel.get(mId!!).observe(this, Observer<Report> {
+                savedInstanceState ?: populate(it!!)
+            })
+        } else {
+            savedInstanceState ?: populate(Report.default())
+        }
 
         mViewModel.successEvent.observe(this, Observer {
             mListener?.onSaveSuccess()
@@ -63,9 +65,7 @@ class EditReportFragment : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         sex.adapter = adapter
 
-        if (savedInstanceState == null) {
-            mViewModel.load(mId)
-        } else {
+        if (savedInstanceState !== null) {
             restore(savedInstanceState)
         }
     }
@@ -99,7 +99,7 @@ class EditReportFragment : Fragment() {
         if (context is OnFragmentInteractionListener) {
             mListener = context
         } else {
-            throw RuntimeException(context!!.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
 
@@ -123,27 +123,27 @@ class EditReportFragment : Fragment() {
         }
     }
 
-    private fun populate() {
-        firstName.setText(mReport.patient.firstName)
-        lastName.setText(mReport.patient.lastName)
-        age.setText(mReport.patient.age.toString())
-        weight.setText(mReport.patient.weight.toString())
-        sex.setSelection(if (mReport.patient.sex == "f") 0 else 1)
-        surgeryDescription.setText(mReport.surgery.description)
-        surgeryDuration.setText(mReport.surgery.duration.toString())
-        bloodVolume.setText(mReport.patient.bloodVolume.toString())
-        fasting.setText(mReport.patient.fasting.toString())
-        surgicalStress.setText(mReport.patient.surgicalStress.toString())
-        hemoglobin.setText(mReport.patient.hemoglobin.toString())
-        minHemoglobin.setText(mReport.patient.minHemoglobin.toString())
-        crystalloids.setText(mReport.patient.intake.crystalloids.toString())
-        colloids.setText(mReport.patient.intake.colloids.toString())
-        hemoderivatives.setText(mReport.patient.intake.hemoderivatives.toString())
-        drugInfusions.setText(mReport.patient.intake.drugInfusions.toString())
-        diuresis.setText(mReport.patient.output.diuresis.toString())
-        aspiration.setText(mReport.patient.output.aspiration.toString())
-        compresses.setText(mReport.patient.output.compresses.toString())
-        levinsTube.setText(mReport.patient.output.levinsTube.toString())
+    private fun populate(report: Report) {
+        firstName.setText(report.patient.firstName)
+        lastName.setText(report.patient.lastName)
+        age.setText(report.patient.age.toString())
+        weight.setText(report.patient.weight.toString())
+        sex.setSelection(if (report.patient.sex == Patient.SEX_FEMALE) 0 else 1)
+        surgeryDescription.setText(report.surgery.description)
+        surgeryDuration.setText(report.surgery.duration.toString())
+        bloodVolume.setText(report.patient.bloodVolume.toString())
+        fasting.setText(report.patient.fasting.toString())
+        surgicalStress.setText(report.patient.surgicalStress.toString())
+        hemoglobin.setText(report.patient.hemoglobin.toString())
+        minHemoglobin.setText(report.patient.minHemoglobin.toString())
+        crystalloids.setText(report.patient.intake.crystalloids.toString())
+        colloids.setText(report.patient.intake.colloids.toString())
+        hemoderivatives.setText(report.patient.intake.hemoderivatives.toString())
+        drugInfusions.setText(report.patient.intake.drugInfusions.toString())
+        diuresis.setText(report.patient.output.diuresis.toString())
+        aspiration.setText(report.patient.output.aspiration.toString())
+        compresses.setText(report.patient.output.compresses.toString())
+        levinsTube.setText(report.patient.output.levinsTube.toString())
     }
 
     /**
@@ -239,7 +239,7 @@ class EditReportFragment : Fragment() {
                 notBlank(getString(R.string.validation_not_blank))
                 rule({ it.toIntOrNull() != null }, { getString(R.string.validation_valid_integer) })
                 rule({ it.toInt() >= 0 }, { getString(R.string.validation_equal_or_greater_than_0) })
-                rule({ it.toInt() < 0 }, { getString(R.string.validation_equal_or_greater_than_0) })
+                rule({ it.toInt() < Patient.MAX_SURGICAL_STRESS }, { getString(R.string.validation_greater_than_x).format(Patient.MAX_SURGICAL_STRESS) })
             }
             rules<String>(hemoglobinInputLayout) {
                 notBlank(getString(R.string.validation_not_blank))
@@ -323,12 +323,29 @@ class EditReportFragment : Fragment() {
     }
 
     private fun save() {
-        mReport.patient.firstName = firstName.text.toString()
-        mReport.patient.lastName = lastName.text.toString()
-        mReport.patient.age = age.text.toString().toInt()
-        mReport.patient.weight = weight.text.toString().toDouble()
+        val report = Report.default()
+        report.patient.firstName = firstName.text.toString()
+        report.patient.lastName = lastName.text.toString()
+        report.patient.age = age.text.toString().toInt()
+        report.patient.weight = weight.text.toString().toDouble()
+        report.patient.sex = if (sex.selectedItemPosition == 0) Patient.SEX_FEMALE else Patient.SEX_MALE
+        report.surgery.description = surgeryDescription.text.toString()
+        report.surgery.duration = surgeryDuration.text.toString().toDouble()
+        report.patient.bloodVolume = bloodVolume.text.toString().toDouble()
+        report.patient.fasting = fasting.text.toString().toDouble()
+        report.patient.surgicalStress = surgicalStress.text.toString().toInt()
+        report.patient.hemoglobin = hemoglobin.text.toString().toDouble()
+        report.patient.minHemoglobin = minHemoglobin.text.toString().toDouble()
+        report.patient.intake.crystalloids = crystalloids.text.toString().toDouble()
+        report.patient.intake.colloids = colloids.text.toString().toDouble()
+        report.patient.intake.hemoderivatives = hemoderivatives.text.toString().toDouble()
+        report.patient.intake.drugInfusions = drugInfusions.text.toString().toDouble()
+        report.patient.output.diuresis = diuresis.text.toString().toDouble()
+        report.patient.output.aspiration = aspiration.text.toString().toDouble()
+        report.patient.output.compresses = compresses.text.toString().toDouble()
+        report.patient.output.levinsTube = levinsTube.text.toString().toDouble()
 
-        mViewModel.save(mReport)
+        mViewModel.save(report)
     }
 
     interface OnFragmentInteractionListener {

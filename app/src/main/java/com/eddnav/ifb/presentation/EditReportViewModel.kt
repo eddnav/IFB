@@ -2,8 +2,7 @@ package com.eddnav.ifb.presentation
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
+import android.arch.lifecycle.LiveData
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.data.report.repository.ReportRepository
 import com.eddnav.ifb.domain.report.Report
@@ -18,22 +17,15 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     var repository: ReportRepository = ReportRepository(application as IFBApp)
 
-    var report: MutableLiveData<Report> = MutableLiveData()
-        private set
+    private var report: LiveData<Report>? = null
 
     var successEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
         private set
 
-    fun load(id: Long? = null) {
-        if (id !== null) {
-            Transformations.map(repository.get(id), {
-                report.value = it
-            })
-        } else {
-            report.value = Report.default()
-        }
+    fun get(id: Long): LiveData<Report> {
+        if (report != null) report = repository.get(id)
+        return report!!
     }
-
 
     fun save(report: Report) {
         launch(UI) {

@@ -54,15 +54,15 @@ object PatientSpec : SubjectSpek<Patient>({
             }
         }
         on("setting sex") {
-            it("should succeed if value is equal to \"f\"") {
-                subject.sex = "f"
-                subject.sex shouldBeEqualTo "f"
+            it("should succeed if value is equal to \"${Patient.SEX_FEMALE}\"") {
+                subject.sex = Patient.SEX_FEMALE
+                subject.sex shouldBeEqualTo Patient.SEX_FEMALE
             }
-            it("should succeed if value is equal to \"m\"") {
-                subject.sex = "m"
-                subject.sex shouldBeEqualTo "m"
+            it("should succeed if value is equal to \"${Patient.SEX_MALE}\"") {
+                subject.sex = Patient.SEX_MALE
+                subject.sex shouldBeEqualTo Patient.SEX_FEMALE
             }
-            it("should fail if value is different than \"m\" or \"f\"") {
+            it("should fail if value is different than \"${Patient.SEX_FEMALE}\" or \"${Patient.SEX_MALE}\"") {
                 { subject.sex = "clearly not a sex value" } shouldThrow IllegalArgumentException::class
             }
         }
