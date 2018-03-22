@@ -239,6 +239,7 @@ class EditReportFragment : Fragment() {
                 notBlank(getString(R.string.validation_not_blank))
                 rule({ it.toIntOrNull() != null }, { getString(R.string.validation_valid_integer) })
                 rule({ it.toInt() >= 0 }, { getString(R.string.validation_equal_or_greater_than_0) })
+                rule({ it.toInt() < 0 }, { getString(R.string.validation_equal_or_greater_than_0) })
             }
             rules<String>(hemoglobinInputLayout) {
                 notBlank(getString(R.string.validation_not_blank))

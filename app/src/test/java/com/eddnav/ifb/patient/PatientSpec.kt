@@ -100,8 +100,15 @@ object PatientSpec : SubjectSpek<Patient>({
                 subject.surgicalStress = 0
                 subject.surgicalStress shouldEqualTo 0
             }
+            it("should succeed if value is equals to max surgical stress") {
+                subject.surgicalStress = Patient.MAX_SURGICAL_STRESS
+                subject.surgicalStress shouldEqualTo Patient.MAX_SURGICAL_STRESS
+            }
             it("should fail if value is less than 0") {
                 { subject.surgicalStress = -1 } shouldThrow IllegalArgumentException::class
+            }
+            it("should fail if value is greater than max surgical stress") {
+                { subject.surgicalStress = Patient.MAX_SURGICAL_STRESS + 1 } shouldThrow IllegalArgumentException::class
             }
         }
         on("setting hemoglobin") {

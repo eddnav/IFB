@@ -90,6 +90,9 @@ class Patient(var firstName: String, var lastName: String,
             if (value < 0) {
                 throw IllegalArgumentException("Surgical stress should be >= 0")
             }
+            if (value > MAX_SURGICAL_STRESS) {
+                throw IllegalArgumentException("Surgical stress should be <= $MAX_SURGICAL_STRESS")
+            }
             field = value
         }
 
@@ -127,4 +130,8 @@ class Patient(var firstName: String, var lastName: String,
     }
 
     val fullName: String = "$firstName $lastName"
+
+    companion object {
+        const val MAX_SURGICAL_STRESS = 10
+    }
 }
