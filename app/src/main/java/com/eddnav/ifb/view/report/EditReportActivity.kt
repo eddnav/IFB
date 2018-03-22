@@ -1,5 +1,6 @@
 package com.eddnav.ifb.view.report
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.eddnav.ifb.R
@@ -28,7 +29,12 @@ class EditReportActivity : AppCompatActivity(), EditReportFragment.OnFragmentInt
         }
     }
 
-    override fun onSaveSuccess() {
+    override fun onSaveSuccess(id: Long, isNew: Boolean) {
+        if (isNew) {
+            val intent = Intent(this, ReportDetailActivity::class.java)
+            intent.putExtra(ReportDetailActivity.ARG_ID, id)
+            startActivity(intent)
+        }
         finish()
     }
 

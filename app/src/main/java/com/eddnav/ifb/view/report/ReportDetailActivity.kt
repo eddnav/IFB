@@ -3,12 +3,14 @@ package com.eddnav.ifb.view.report
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.eddnav.ifb.R
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ReportDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report_detail)
+        setSupportActionBar(toolbar)
 
         if (savedInstanceState == null) {
 

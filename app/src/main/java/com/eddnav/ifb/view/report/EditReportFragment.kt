@@ -55,8 +55,8 @@ class EditReportFragment : Fragment() {
             savedInstanceState ?: populate(Report.default())
         }
 
-        mViewModel.successEvent.observe(this, Observer {
-            mListener?.onSaveSuccess()
+        mViewModel.saveSuccessEvent.observe(this, Observer {
+            mListener?.onSaveSuccess(it!!.id, it.isNew)
         })
 
         mValidator = createValidator()
@@ -345,11 +345,11 @@ class EditReportFragment : Fragment() {
         report.patient.output.compresses = compresses.text.toString().toDouble()
         report.patient.output.levinsTube = levinsTube.text.toString().toDouble()
 
-        mViewModel.save(report)
+        mViewModel.save(report, mId == null)
     }
 
     interface OnFragmentInteractionListener {
-        fun onSaveSuccess()
+        fun onSaveSuccess(id: Long, isNew: Boolean)
     }
 
     companion object {

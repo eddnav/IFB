@@ -19,7 +19,7 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     private var report: LiveData<Report>? = null
 
-    var successEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
+    var saveSuccessEvent: SingleLiveEvent<SaveSuccessEvent> = SingleLiveEvent()
         private set
 
     fun get(id: Long): LiveData<Report> {
@@ -27,10 +27,10 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
         return report!!
     }
 
-    fun save(report: Report) {
+    fun save(report: Report, isNew: Boolean) {
         launch(UI) {
-            repository.addAsync(report).await()
-            successEvent.call()
+            val id = repository.addAsync(report).await()
+            saveSuccessEvent.postValue(SaveSuccessEvent(id, isNew))
         }
     }
 }
