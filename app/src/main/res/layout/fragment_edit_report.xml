@@ -105,9 +105,10 @@
             android:id="@+id/sex"
             android:layout_width="0dp"
             android:layout_height="@dimen/spinner_height"
-            android:layout_marginTop="@dimen/spinner_top_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/weightInputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/weightInputLayout"
+            app:layout_constraintVertical_bias="0.98"
             app:layout_constraintWidth_percent=".33"
             tools:listitem="@layout/spinner_item" />
 

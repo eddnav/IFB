@@ -10,7 +10,6 @@
     <dimen name="table_content_min_height">32dp</dimen>
     <dimen name="spinner_height">54dp</dimen>
     <dimen name="spinner_item_height">28dp</dimen>
-    <dimen name="spinner_top_margin">5dp</dimen>
     <dimen name="text_input_edit_text_bottom_padding">16dp</dimen>
     <dimen name="better_text_input_edit_text_suffix_margin">4dp</dimen>
 
