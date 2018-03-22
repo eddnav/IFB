@@ -15,7 +15,6 @@ class ReportDetailActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
 
             if (intent.extras != null) {
-                title = getString(R.string.title_edit_report)
                 supportFragmentManager.beginTransaction().add(
                         R.id.content, ReportDetailFragment.newInstance(intent.getLongExtra(ReportDetailActivity.ARG_ID, -1)
                 )).commit()
