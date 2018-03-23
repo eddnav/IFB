@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        title = getString(R.string.title_report)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().add(
                     R.id.content, ReportListFragment.newInstance()
