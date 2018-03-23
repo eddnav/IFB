@@ -12,10 +12,7 @@ import com.eddnav.ifb.R
 import com.eddnav.ifb.domain.patient.Patient
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.presentation.EditReportViewModel
-import com.thedeadpixelsociety.passport.Passport
-import com.thedeadpixelsociety.passport.ValidationMethod
-import com.thedeadpixelsociety.passport.notBlank
-import com.thedeadpixelsociety.passport.passport
+import com.thedeadpixelsociety.passport.*
 import kotlinx.android.synthetic.main.fragment_edit_report.*
 
 /**
@@ -187,29 +184,7 @@ class EditReportFragment : Fragment() {
     }
 
     private fun validate(): Boolean {
-        var pass = true
-
-        if (!mValidator.validate(firstNameInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(lastNameInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(ageInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(weightInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(surgeryDescriptionInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(surgeryDurationInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(bloodVolumeInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(fastingInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(surgicalStressInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(hemoglobinInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(minHemoglobinInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(crystalloidsInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(colloidsInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(hemoderivativesInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(drugInfusionsInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(diuresisInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(aspirationInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(compressesInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-        if (!mValidator.validate(levinsTubeInputLayout, ValidationMethod.IMMEDIATE)) pass = false
-
-        return pass
+        return mValidator.validate(this, ValidationMethod.FAIL_FAST)
     }
 
     private fun createValidator(): Passport {
