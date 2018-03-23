@@ -134,6 +134,9 @@ class Patient(var firstName: String, var lastName: String,
     companion object {
         const val SEX_MALE = "m"
         const val SEX_FEMALE = "f"
+        const val DEFAULT_FEMALE_BLOOD_VOLUME = 60.0
+        const val DEFAULT_MALE_BLOOD_VOLUME = 70.0
+        const val DEFAULT_HEMOGLOBIN = 13.5
         const val MAX_SURGICAL_STRESS = 10
     }
 }

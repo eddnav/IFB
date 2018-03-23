@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.eddnav.ifb.R
 import com.eddnav.ifb.domain.patient.Patient
@@ -64,6 +65,16 @@ class EditReportFragment : Fragment() {
         val adapter = ArrayAdapter<String>(view!!.context, R.layout.spinner_item, resources.getStringArray(R.array.sex_labels))
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         sex.adapter = adapter
+
+        sex.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if (position == 0) bloodVolume.setText(Patient.DEFAULT_FEMALE_BLOOD_VOLUME.toString())
+                else bloodVolume.setText(Patient.DEFAULT_MALE_BLOOD_VOLUME.toString())
+            }
+        }
 
         if (savedInstanceState !== null) {
             restore(savedInstanceState)

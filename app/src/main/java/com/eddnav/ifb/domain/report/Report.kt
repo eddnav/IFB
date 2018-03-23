@@ -51,9 +51,9 @@ class Report(var id: Long?, var patient: Patient, var surgery: Surgery, var hydr
     companion object {
 
         fun default(): Report {
-            val patient = Patient("", "", 10, 60.0,
-                    "f", 70.0, 0.0, 0, 13.5,
-                    13.5,
+            val patient = Patient("", "", 20, 60.0,
+                    Patient.SEX_FEMALE, Patient.DEFAULT_FEMALE_BLOOD_VOLUME, 0.0, 0, Patient.DEFAULT_HEMOGLOBIN,
+                    Patient.DEFAULT_HEMOGLOBIN,
                     Intake(0.0, 0.0, 0.0, 0.0),
                     Output(0.0, 0.0, 0.0, 0.0))
             return Report(patient,
