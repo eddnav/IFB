@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.eddnav.ifb.R
 import kotlinx.android.synthetic.main.toolbar.*
 
-class ReportDetailActivity : AppCompatActivity() {
+class ReportDetailActivity : AppCompatActivity(), ReportDetailFragment.OnFragmentInteractionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +22,10 @@ class ReportDetailActivity : AppCompatActivity() {
                 )).commit()
             } else throw IllegalArgumentException("getExtras() is null, please add ${ReportDetailActivity.ARG_ID} to the intent.")
         }
+    }
+
+    override fun onDeleteSuccess() {
+        finish()
     }
 
     companion object {

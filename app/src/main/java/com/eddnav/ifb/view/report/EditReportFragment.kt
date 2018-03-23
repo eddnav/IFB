@@ -49,8 +49,8 @@ class EditReportFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (mId != null) {
-            mViewModel.get(mId!!).observe(this, Observer<Report> {
-                savedInstanceState ?: populate(it!!)
+            mViewModel.get(mId!!).observe(this, Observer {
+                savedInstanceState ?: populate(it)
             })
         } else {
             savedInstanceState ?: populate(Report.default())
@@ -134,27 +134,29 @@ class EditReportFragment : Fragment() {
         }
     }
 
-    private fun populate(report: Report) {
-        firstName.setText(report.patient.firstName)
-        lastName.setText(report.patient.lastName)
-        age.setText(report.patient.age.toString())
-        weight.setText(report.patient.weight.toString())
-        sex.setSelection(if (report.patient.sex == Patient.SEX_FEMALE) 0 else 1)
-        surgeryDescription.setText(report.surgery.description)
-        surgeryDuration.setText(report.surgery.duration.toString())
-        bloodVolume.setText(report.patient.bloodVolume.toString())
-        fasting.setText(report.patient.fasting.toString())
-        surgicalStress.setText(report.patient.surgicalStress.toString())
-        hemoglobin.setText(report.patient.hemoglobin.toString())
-        minHemoglobin.setText(report.patient.minHemoglobin.toString())
-        crystalloids.setText(report.patient.intake.crystalloids.toString())
-        colloids.setText(report.patient.intake.colloids.toString())
-        hemoderivatives.setText(report.patient.intake.hemoderivatives.toString())
-        drugInfusions.setText(report.patient.intake.drugInfusions.toString())
-        diuresis.setText(report.patient.output.diuresis.toString())
-        aspiration.setText(report.patient.output.aspiration.toString())
-        compresses.setText(report.patient.output.compresses.toString())
-        levinsTube.setText(report.patient.output.levinsTube.toString())
+    private fun populate(report: Report?) {
+        if (report != null) {
+            firstName.setText(report.patient.firstName)
+            lastName.setText(report.patient.lastName)
+            age.setText(report.patient.age.toString())
+            weight.setText(report.patient.weight.toString())
+            sex.setSelection(if (report.patient.sex == Patient.SEX_FEMALE) 0 else 1)
+            surgeryDescription.setText(report.surgery.description)
+            surgeryDuration.setText(report.surgery.duration.toString())
+            bloodVolume.setText(report.patient.bloodVolume.toString())
+            fasting.setText(report.patient.fasting.toString())
+            surgicalStress.setText(report.patient.surgicalStress.toString())
+            hemoglobin.setText(report.patient.hemoglobin.toString())
+            minHemoglobin.setText(report.patient.minHemoglobin.toString())
+            crystalloids.setText(report.patient.intake.crystalloids.toString())
+            colloids.setText(report.patient.intake.colloids.toString())
+            hemoderivatives.setText(report.patient.intake.hemoderivatives.toString())
+            drugInfusions.setText(report.patient.intake.drugInfusions.toString())
+            diuresis.setText(report.patient.output.diuresis.toString())
+            aspiration.setText(report.patient.output.aspiration.toString())
+            compresses.setText(report.patient.output.compresses.toString())
+            levinsTube.setText(report.patient.output.levinsTube.toString())
+        }
     }
 
     /**
@@ -335,6 +337,7 @@ class EditReportFragment : Fragment() {
 
     private fun save() {
         val report = Report.default()
+        report.id = mId
         report.patient.firstName = firstName.text.toString()
         report.patient.lastName = lastName.text.toString()
         report.patient.age = age.text.toString().toInt()
@@ -356,7 +359,7 @@ class EditReportFragment : Fragment() {
         report.patient.output.compresses = compresses.text.toString().toDouble()
         report.patient.output.levinsTube = levinsTube.text.toString().toDouble()
 
-        mViewModel.save(report, mId == null)
+        mViewModel.save(report)
     }
 
     interface OnFragmentInteractionListener {

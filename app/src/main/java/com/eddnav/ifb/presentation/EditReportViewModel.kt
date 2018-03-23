@@ -17,20 +17,26 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
 
     var repository: ReportRepository = ReportRepository(application as IFBApp)
 
-    private var report: LiveData<Report>? = null
+    private var report: LiveData<Report?>? = null
 
     var saveSuccessEvent: SingleLiveEvent<SaveSuccessEvent> = SingleLiveEvent()
         private set
 
-    fun get(id: Long): LiveData<Report> {
-        if (report != null) report = repository.get(id)
+    fun get(id: Long): LiveData<Report?> {
+        report = repository.get(id)
         return report!!
     }
 
-    fun save(report: Report, isNew: Boolean) {
+    fun save(report: Report) {
         launch(UI) {
-            val id = repository.addAsync(report).await()
-            saveSuccessEvent.postValue(SaveSuccessEvent(id, isNew))
+            val isNew = report.id == null
+            var id = report.id
+            if (isNew) {
+                id = repository.addAsync(report).await()
+            } else {
+                repository.updateAsync(report).await()
+            }
+            saveSuccessEvent.postValue(SaveSuccessEvent(id!!, isNew))
         }
     }
 }

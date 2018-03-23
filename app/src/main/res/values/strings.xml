@@ -8,6 +8,8 @@
     <string name="title_edit_report">Edit Report</string>
 
     <string name="action_title_save">Save</string>
+    <string name="action_title_edit">Edit</string>
+    <string name="action_title_delete">Delete</string>
 
     <string name="label_first_name">First Name</string>
     <string name="label_last_name">Last Name</string>

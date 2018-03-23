@@ -39,6 +39,6 @@ class EditReportActivity : AppCompatActivity(), EditReportFragment.OnFragmentInt
     }
 
     companion object {
-        private const val ARG_ID = "id"
+        const val ARG_ID = "id"
     }
 }

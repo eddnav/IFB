@@ -6,6 +6,9 @@ import android.arch.lifecycle.LiveData
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.data.report.repository.ReportRepository
 import com.eddnav.ifb.domain.report.Report
+import com.eddnav.ifb.vendor.SingleLiveEvent
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
 
 /**
  * @author Eduardo Naveda
@@ -14,12 +17,21 @@ class ReportDetailViewModel(application: Application) : AndroidViewModel(applica
 
     var repository: ReportRepository = ReportRepository(application as IFBApp)
 
-    var report: LiveData<Report>? = null
+    var report: LiveData<Report?>? = null
         private set
 
-    fun get(id: Long): LiveData<Report> {
-        if (report == null) report = repository.get(id)
+    var deleteSuccessEvent: SingleLiveEvent<Unit> = SingleLiveEvent()
+        private set
+
+    fun get(id: Long): LiveData<Report?> {
+        report = repository.get(id)
         return report!!
     }
 
+    fun delete(id: Long) {
+        launch (UI) {
+            repository.deleteAsync(id).await()
+            deleteSuccessEvent.call()
+        }
+    }
 }
