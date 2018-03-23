@@ -12,6 +12,8 @@ class ReportDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_report_detail)
         setSupportActionBar(toolbar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         if (savedInstanceState == null) {
 
             if (intent.extras != null) {
