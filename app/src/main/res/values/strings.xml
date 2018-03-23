@@ -34,6 +34,7 @@
     <string name="label_intakes">Intakes</string>
     <string name="label_outputs">Outputs</string>
     <string name="label_results">Results</string>
+    <string name="label_empty_report_list">There are no reports to show</string>
 
     <string name="value_2f">%1$.2f</string>
     <string name="value_basic_info">%1$s • Age: %2$d • %3$.2f kg</string>
@@ -83,6 +84,7 @@
     <string name="table_header_insensible_losses">Insensible Losses</string>
     <string name="table_header_fasting">Preoperative Fasting</string>
     <string name="table_header_surgical_stress">Surgical Stress</string>
+    <string name="table_header_total">Total</string>
 
     <string name="validation_not_blank">Should not be blank</string>
     <string name="validation_valid_integer">Should be a valid integer</string>
@@ -90,6 +92,5 @@
     <string name="validation_equal_or_greater_than_0">Should be greater or equal than 0</string>
     <string name="validation_greater_than_0">Should be greater than 0</string>
     <string name="validation_greater_than_x">Should not be greater than %1$d</string>
-    <string name="table_header_total">Total</string>
 
 </resources>

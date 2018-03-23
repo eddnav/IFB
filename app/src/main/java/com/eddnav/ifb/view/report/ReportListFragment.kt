@@ -3,16 +3,18 @@ package com.eddnav.ifb.view.report
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.eddnav.ifb.R
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.presentation.ReportListViewModel
+import kotlinx.android.synthetic.main.fragment_report_list.*
+import kotlinx.android.synthetic.main.fragment_report_list.view.*
 
 /**
  * @author Eduardo Naveda
@@ -31,14 +33,15 @@ class ReportListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_report_list, container, false) as RecyclerView
-        view.layoutManager = LinearLayoutManager(context)
+        val view = inflater.inflate(R.layout.fragment_report_list, container, false)
+        view.list.layoutManager = LinearLayoutManager(context)
+
         mAdapter = ReportRecyclerViewAdapter(mReports, {
             val intent = Intent(context, ReportDetailActivity::class.java)
             intent.putExtra(ReportDetailActivity.ARG_ID, it.id)
             startActivity(intent)
         })
-        view.adapter = mAdapter
+        view.list.adapter = mAdapter
 
         return view
     }
@@ -50,6 +53,15 @@ class ReportListFragment : Fragment() {
             mReports.clear()
             mReports.addAll(it!!)
             mAdapter.notifyDataSetChanged()
+
+            if (it.size > 0) {
+                list.visibility = View.VISIBLE
+                empty.visibility = View.GONE
+            } else {
+                list.visibility = View.GONE
+                empty.visibility = View.VISIBLE
+            }
+
         })
     }
 
