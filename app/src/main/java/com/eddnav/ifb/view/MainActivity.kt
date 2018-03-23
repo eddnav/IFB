@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        title = getString(R.string.title_report)
+        title = getString(R.string.title_reports)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().add(
