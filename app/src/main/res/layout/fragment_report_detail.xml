@@ -396,6 +396,53 @@
 
         </TableRow>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lineDivider" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/table_content_min_height">
+
+            <TextView
+                style="@style/IFBTableSideHeaderItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="0dp"
+                android:text="@string/table_header_total" />
+
+            <TextView
+                android:id="@+id/t1h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="39" />
+
+            <TextView
+                android:id="@+id/t2h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="156" />
+
+            <TextView
+                android:id="@+id/t3h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="111" />
+
+            <TextView
+                android:id="@+id/t4h"
+                style="@style/IFBTableNumericContentItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:text="58" />
+
+        </TableRow>
+
     </TableLayout>
 
     <ImageView

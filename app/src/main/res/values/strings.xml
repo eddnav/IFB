@@ -90,5 +90,6 @@
     <string name="validation_equal_or_greater_than_0">Should be greater or equal than 0</string>
     <string name="validation_greater_than_0">Should be greater than 0</string>
     <string name="validation_greater_than_x">Should not be greater than %1$d</string>
+    <string name="table_header_total">Total</string>
 
 </resources>
