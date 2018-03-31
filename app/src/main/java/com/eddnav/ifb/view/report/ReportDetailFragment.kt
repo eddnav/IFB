@@ -94,7 +94,7 @@ class ReportDetailFragment : Fragment() {
             fullName.text = report.patient.fullName
             basicInfo.text = getString(R.string.value_basic_info)
                     .format(
-                            if (report.patient.sex === Patient.SEX_FEMALE) getString(R.string.value_female) else getString(R.string.value_male),
+                            if (report.patient.sex == Patient.SEX_FEMALE) getString(R.string.value_female) else getString(R.string.value_male),
                             report.patient.age,
                             report.patient.weight)
             surgeryDescription.text = report.surgery.description
