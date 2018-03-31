@@ -399,7 +399,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorPrimaryDark" />
+            android:background="@color/lineDivider" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -411,13 +411,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="0dp"
-                android:text="@string/table_header_total" />
+                android:text="@string/table_header_total"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/t1h"
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textStyle="bold"
                 tools:text="39" />
 
             <TextView
@@ -425,6 +427,7 @@
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textStyle="bold"
                 tools:text="156" />
 
             <TextView
@@ -432,6 +435,7 @@
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textStyle="bold"
                 tools:text="111" />
 
             <TextView
@@ -439,6 +443,7 @@
                 style="@style/IFBTableNumericContentItem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textStyle="bold"
                 tools:text="58" />
 
         </TableRow>
