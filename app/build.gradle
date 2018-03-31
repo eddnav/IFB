@@ -11,16 +11,24 @@ android {
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
-        versionName '1.0'
+        versionName '0.0.0'
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+    signingConfigs {
+        release {
+            storeFile file("../${STORE_FILE}")
+            storePassword IFB_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword IFB_STORE_PASSWORD
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     testOptions {
         junitPlatform {
             filters {
@@ -30,7 +38,6 @@ android {
             }
         }
     }
-
     defaultConfig.vectorDrawables.useSupportLibrary = true
 }
 
