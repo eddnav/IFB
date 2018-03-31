@@ -60,7 +60,7 @@ object PatientSpec : SubjectSpek<Patient>({
             }
             it("should succeed if value is equal to \"${Patient.SEX_MALE}\"") {
                 subject.sex = Patient.SEX_MALE
-                subject.sex shouldBeEqualTo Patient.SEX_FEMALE
+                subject.sex shouldBeEqualTo Patient.SEX_MALE
             }
             it("should fail if value is different than \"${Patient.SEX_FEMALE}\" or \"${Patient.SEX_MALE}\"") {
                 { subject.sex = "clearly not a sex value" } shouldThrow IllegalArgumentException::class
