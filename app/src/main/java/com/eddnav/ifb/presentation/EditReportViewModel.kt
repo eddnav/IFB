@@ -7,8 +7,8 @@ import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.data.report.repository.ReportRepository
 import com.eddnav.ifb.domain.report.Report
 import com.eddnav.ifb.vendor.SingleLiveEvent
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.android.UI
+import kotlinx.coroutines.launch
 
 /**
  * @author Eduardo Naveda
@@ -28,6 +28,7 @@ class EditReportViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     fun save(report: Report) {
+        // TODO: Fix this deprecation.
         launch(UI) {
             val isNew = report.id == null
             var id = report.id

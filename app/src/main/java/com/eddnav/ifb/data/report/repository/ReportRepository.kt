@@ -5,13 +5,13 @@ import android.arch.lifecycle.Transformations
 import com.eddnav.ifb.IFBApp
 import com.eddnav.ifb.cache.report.converter.ReportConverter
 import com.eddnav.ifb.domain.report.Report
-import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.async
 import org.threeten.bp.OffsetDateTime
 
 /**
  * @author Eduardo Naveda
  */
-class ReportRepository(var app: IFBApp) { // TODO: disgusting, remember to move this to Dagger soon.
+class ReportRepository(var app: IFBApp) { // TODO: remember to move this to Koin soon.
 
     /**
      * Returns a list of all the saved reports.
